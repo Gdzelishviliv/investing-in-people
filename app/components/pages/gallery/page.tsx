@@ -1,4 +1,4 @@
-import Animate from "../components/atoms/Animate";
+import Animate from "../../atoms/Animate";
 
 const items = Array.from({ length: 6 });
 

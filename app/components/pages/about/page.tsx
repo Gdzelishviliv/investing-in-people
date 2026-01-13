@@ -1,4 +1,4 @@
-import Animate from "../components/atoms/Animate";
+import Animate from "../../atoms/Animate";
 
 export default function AboutPage() {
   return (
