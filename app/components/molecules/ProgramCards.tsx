@@ -10,25 +10,25 @@ import { motion } from "framer-motion";
 const programs = [
   {
     title: "Befriend a Refugee",
-    image: "/diverse-friends-meeting-community.jpg",
+    image: "https://i-p-c.org/wp-content/uploads/2022/03/0_ATR_MGA_300421mgaBini.jpg",
     link: "/befriending",
   },
   {
     title: "Overseas Doctors",
-    image: "/medical-professionals-training-hospital.jpg",
+    image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg",
     link: "/repod",
   },
   {
     title: "Integration Activities",
-    image: "/community-celebration-diverse-group.jpg",
+    image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_internationalwomensday-scaled.jpg",
     link: "/integration",
   },
 ];
 
 export function ProgramCards() {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <div className="-mt-10 bg-background">
+      <div className="container mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
           {programs.map((program, index) => (
             <motion.div
@@ -39,7 +39,7 @@ export function ProgramCards() {
               viewport={{ once: true }}
             >
               <Card className="overflow-hidden group hover:shadow-xl transition-shadow">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 overflow-hidden ">
                   <Image
                     src={program.image || "/placeholder.svg"}
                     alt={program.title}
@@ -66,6 +66,6 @@ export function ProgramCards() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

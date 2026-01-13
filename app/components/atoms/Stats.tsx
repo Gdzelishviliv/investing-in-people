@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, scale } from "framer-motion";
 import { Network, Handshake, Users, ThumbsUp } from "lucide-react";
+import { filter } from "framer-motion/client";
 
 const statistics = [
   { value: 898, label: "People supported this year", icon: Network },
@@ -81,10 +82,23 @@ export function Stats() {
                 className="text-center space-y-4"
               >
                 <div className="flex justify-center">
-                  <Icon
-                    className="w-16 h-16 text-[#FF6B35]"
-                    strokeWidth={1.5}
-                  />
+                  <motion.div
+                    whileHover={{
+                      scale: 1.25,
+                      rotate: 360,
+                      filter: "drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))",
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 35,
+                    }}
+                  >
+                    <Icon
+                      className="w-16 h-16 text-[#FF6B35]"
+                      strokeWidth={1.5}
+                    />
+                  </motion.div>
                 </div>
 
                 <div className="text-5xl md:text-6xl font-bold text-gray-900 tabular-nums">
