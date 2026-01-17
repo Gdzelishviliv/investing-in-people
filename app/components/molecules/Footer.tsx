@@ -10,7 +10,7 @@ export function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.2 }}
           className="text-center text-sm text-slate-400"
         >
           <p>

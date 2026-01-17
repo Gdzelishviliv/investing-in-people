@@ -12,11 +12,11 @@ const navItems = [
   },
   {
     label: "TEESSIDE",
-    href: "/teesside",
+    href: "/pages/teesside",
     children: [
-      { label: "International Centre", href: "/teesside/international-centre" },
-      { label: "Gardening Project", href: "/teesside/gardening-project" },
-      { label: "CYCLE RE-CYCLING", href: "/teesside/recycling" },
+      { label: "International Centre", href: "/pages/teesside/international-centre" },
+      { label: "Gardening Project", href: "/pages/teesside/gardening-project" },
+      { label: "CYCLE RE-CYCLING", href: "/pages/teesside/recycling" },
     ],
   },
   {
@@ -74,7 +74,6 @@ export function Header() {
 
               return (
                 <div key={item.href} className="relative group">
-                  {/* MAIN LINK */}
                   <Link
                     href={item.href}
                     className={`

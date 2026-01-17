@@ -46,7 +46,8 @@ export function Hero() {
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{amount:0.2}}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center space-y-6"

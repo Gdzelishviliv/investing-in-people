@@ -10,7 +10,7 @@ export function About() {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.2 }}
         >
           <img
             src="https://i-p-c.org/wp-content/uploads/2022/03/ipc_webcover-1-e1687948316485.jpg"
@@ -22,7 +22,7 @@ export function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.2 }}
           className=" xl:w-1/2 flex flex-col justify-center items-center"
         >
           <div className="text-center mb-8">
@@ -37,7 +37,7 @@ export function About() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            viewport={{ once: true }}
+            viewport={{ amount: 0.2 }}
             className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4"
           >
             <p>
@@ -68,7 +68,7 @@ export function About() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ amount: 0.2 }}
             className="mt-12 text-center"
           ></motion.div>
         </motion.div>

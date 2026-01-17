@@ -1,12 +1,9 @@
-"use client";
+"use client"
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { style } from "framer-motion/client";
+import { ArrowRight } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { motion } from "framer-motion"
 
 const programs = [
   {
@@ -18,57 +15,61 @@ const programs = [
     title: "Overseas Doctors",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg",
     link: "/repod",
-    style: "mt-15",
   },
   {
     title: "Integration Activities",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_internationalwomensday-scaled.jpg",
     link: "/integration",
   },
-];
+]
 
 export function ProgramCards() {
   return (
-    <div className="-mt-20 bg-background">
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
+    <section className="py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {programs.map((program, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
-              viewport={{ once: true }}
-              className={program.style || ""}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{  amount: 0.2 }}
             >
-              <Card className="overflow-hidden group hover:shadow-xl transition-shadow">
-                <div className="relative h-64 overflow-hidden ">
+              <Link href={program.link} className="group block">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
                   <Image
-                    src={program.image || "/placeholder.svg"}
+                    src={program.image}
                     alt={program.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw,
+                           (max-width: 1024px) 50vw,
+                           33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
+
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent" />
+
+                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight transition-all duration-500 group-hover:text-[#FF6B35] group-hover:-translate-y-1">
+                        {program.title}
+                      </h3>
+                      <div className="h-0.5 bg-white/70 mt-3 w-1/3 transition-all duration-500 group-hover:w-full group-hover:bg-[#FF6B35]" />
+                    </div>
+
+                    <div className="flex justify-end">
+                      <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#FF6B35] group-hover:scale-110">
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-4 text-balance">
-                    {program.title}
-                  </h3>
-                  <Link href={program.link}>
-                    <Button
-                      variant="link"
-                      className="p-0 h-auto font-semibold group/btn"
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+              </Link>
             </motion.div>
           ))}
         </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
