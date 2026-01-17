@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { style } from "framer-motion/client";
 
 const programs = [
   {
@@ -17,6 +18,7 @@ const programs = [
     title: "Overseas Doctors",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg",
     link: "/repod",
+    style: "mt-15",
   },
   {
     title: "Integration Activities",
@@ -27,7 +29,7 @@ const programs = [
 
 export function ProgramCards() {
   return (
-    <div className="-mt-10 bg-background">
+    <div className="-mt-20 bg-background">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
           {programs.map((program, index) => (
@@ -37,6 +39,7 @@ export function ProgramCards() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
               viewport={{ once: true }}
+              className={program.style || ""}
             >
               <Card className="overflow-hidden group hover:shadow-xl transition-shadow">
                 <div className="relative h-64 overflow-hidden ">
