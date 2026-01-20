@@ -55,7 +55,7 @@ export function Hero() {
             <h1 className="text-4xl md:text-6xl font-bold leading-tight text-balance">
               {slides[currentSlide].title}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 text-balance">
+            <p className="text-xl md:text-2xl text-gray-300 text-balance">
               {slides[currentSlide].subtitle}
             </p>
           </motion.div>

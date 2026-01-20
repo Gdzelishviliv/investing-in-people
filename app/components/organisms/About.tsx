@@ -15,7 +15,7 @@ export function About() {
           <img
             src="https://i-p-c.org/wp-content/uploads/2022/03/ipc_webcover-1-e1687948316485.jpg"
             alt="about image"
-            className="max-w-full object-cover rounded-lg shadow-lg mr-12"
+            className="max-w-full object-cover rounded-lg shadow-lg xl:mr-12"
           />
         </motion.div>
         <motion.div
@@ -23,7 +23,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ amount: 0.2 }}
-          className=" xl:w-1/2 flex flex-col justify-center items-center"
+          className=" xl:w-1/2 flex flex-col justify-center items-center xl:mt-0 mt-10"
         >
           <div className="text-center mb-8">
             <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">
