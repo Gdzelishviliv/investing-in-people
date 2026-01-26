@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Twitter, Facebook } from "lucide-react";
-import { motion } from "framer-motion";
+import { Twitter, Facebook, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   {
@@ -29,16 +30,38 @@ const navItems = [
   { label: "CONTACT", href: "/contact" },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3 },
+  },
+};
+
 export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white border-b sticky top-0 z-50 shadow-sm"
+      className="bg-white/80 backdrop-blur-md border-b border-white/20 sticky top-0 z-50 shadow-sm"
     >
-      {/* TOP BAR */}
-      <div className="bg-gray-50 border-b">
+      <div className="bg-white/40 backdrop-blur-sm border-b border-white/20">
         <div className="container mx-auto px-4">
           <div className="flex justify-end gap-4 py-2">
             <a
@@ -60,18 +83,16 @@ export function Header() {
           </div>
         </div>
       </div>
-
-      {/* MAIN NAV */}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           <Link href="/" className="text-2xl font-bold text-[#FF6B35]">
             IPC
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item, index) => {
               const isActive = index === 0;
-
               return (
                 <div key={item.href} className="relative group">
                   <Link
@@ -87,8 +108,6 @@ export function Header() {
                     `}
                   >
                     {item.label}
-
-                    {/* BORDER ANIMATION */}
                     <span
                       className={`absolute left-0 top-0 h-px bg-[#FF6B35] transition-all duration-300 ${
                         isActive ? "w-full" : "w-0 group-hover:w-full"
@@ -110,8 +129,6 @@ export function Header() {
                       }`}
                     />
                   </Link>
-
-                  {/* DROPDOWN */}
                   {item.children && (
                     <div
                       className="
@@ -147,7 +164,103 @@ export function Header() {
               );
             })}
           </nav>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 text-gray-700 hover:text-[#FF6B35] transition"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </motion.button>
         </div>
+
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden overflow-hidden border-t border-white/20 bg-white/40 backdrop-blur-sm"
+            >
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="flex flex-col space-y-1 py-4"
+              >
+                {navItems.map((item) => (
+                  <div key={item.href}>
+                    <motion.button
+                      variants={itemVariants}
+                      onClick={() =>
+                        setExpandedItem(
+                          expandedItem === item.href ? null : item.href
+                        )
+                      }
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-700 hover:text-[#FF6B35] hover:bg-gray-50 transition"
+                    >
+                      <Link href={item.href} className="flex-1 text-left">
+                        {item.label}
+                      </Link>
+                      {item.children && (
+                        <motion.svg
+                          animate={{
+                            rotate: expandedItem === item.href ? 180 : 0,
+                          }}
+                          transition={{ duration: 0.2 }}
+                          className="h-4 w-4 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                          />
+                        </motion.svg>
+                      )}
+                    </motion.button>
+
+                    {/* Submenu */}
+                    <AnimatePresence>
+                      {item.children && expandedItem === item.href && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden bg-gray-50"
+                        >
+                          {item.children.map((child, idx) => (
+                            <motion.div
+                              key={child.href}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: idx * 0.05 }}
+                            >
+                              <Link
+                                href={child.href}
+                                className="block px-8 py-2 text-sm text-gray-600 hover:text-[#FF6B35] hover:bg-white transition"
+                              >
+                                {child.label}
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );

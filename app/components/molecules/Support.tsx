@@ -52,9 +52,15 @@ export const Support = () => {
             <button
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
+              
               className="group relative cursor-pointer inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold uppercase tracking-wider text-white rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 ease-out"
               style={{
+                animation: isHovered ? "glowPulse 1.6s ease-in-out infinite" : "none",
                 background: "linear-gradient(135deg, #FF6B35 0%, #FF6B35 100%)",
+                boxShadow: isHovered
+                  ? "0 12px 30px rgba(255,107,53,0.45), 0 0 18px rgba(255,107,53,0.6)"
+                  : "0 6px 14px rgba(0,0,0,0.15)",
+                transform: isHovered ? "translateY(-2px)" : "translateY(0)",
               }}
             >
               <div
@@ -93,50 +99,6 @@ export const Support = () => {
           <Stats />
         </div>
       </div>
-      <style>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes pulse-glow {
-          0%, 100% {
-            box-shadow: 0 0 20px #f05100;
-          }
-          50% {
-            box-shadow: 0 0 40px #ff5500a8;
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 3s ease-out forwards;
-          opacity: 0;
-        }
-
-        .animate-fade-in-up {
-          animation: fade-in-up 3s ease-out forwards;
-          opacity: 0;
-        }
-
-        button:hover {
-          animation: pulse-glow 3s ease-in-out;
-        }
-      `}</style>
     </section>
   );
 };
