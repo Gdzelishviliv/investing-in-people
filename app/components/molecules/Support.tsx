@@ -31,7 +31,7 @@ export const Support = () => {
           >
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
               Fundraising for the People and{" "}
-              <span className="bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
                 Causes You Care About
               </span>
             </h1>
@@ -84,8 +84,6 @@ export const Support = () => {
                   />
                 </svg>
               </span>
-
-              {/* Hover background shift */}
               <div
                 className="absolute inset-0 bg-linear-to-r from-orange-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ zIndex: -1 }}
@@ -118,25 +116,25 @@ export const Support = () => {
 
         @keyframes pulse-glow {
           0%, 100% {
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 20px #f05100;
           }
           50% {
-            box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 40px #ff5500a8;
           }
         }
 
         .animate-fade-in {
-          animation: fade-in 0.8s ease-out forwards;
+          animation: fade-in 3s ease-out forwards;
           opacity: 0;
         }
 
         .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out forwards;
+          animation: fade-in-up 3s ease-out forwards;
           opacity: 0;
         }
 
         button:hover {
-          animation: pulse-glow 1.5s ease-in-out;
+          animation: pulse-glow 3s ease-in-out;
         }
       `}</style>
     </section>
