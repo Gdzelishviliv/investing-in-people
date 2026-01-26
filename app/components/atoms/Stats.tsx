@@ -57,7 +57,7 @@ export function Stats() {
           });
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     const element = document.getElementById("stats-section");
@@ -67,9 +67,9 @@ export function Stats() {
   }, [hasAnimated]);
 
   return (
-    <section id="stats-section" className="py-20 bg-white">
+    <section id="stats-section" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-6 border border-white/20 hover:border-orange-300/50 hover:bg-white/15 transition-all duration-300">
           {statistics.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -78,7 +78,7 @@ export function Stats() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 1 }}
-                viewport={{ amount:0.5 }}
+                viewport={{ amount: 0.5 }}
                 className="text-center space-y-4"
               >
                 <div className="flex justify-center">
@@ -101,11 +101,11 @@ export function Stats() {
                   </motion.div>
                 </div>
 
-                <div className="text-5xl md:text-6xl font-bold text-gray-900 tabular-nums">
+                <div className="text-5xl md:text-6xl font-bold text-white/75 tabular-nums">
                   {counts[index].toLocaleString()}
                 </div>
 
-                <p className="text-sm text-gray-600 max-w-xs mx-auto text-balance">
+                <p className="text-sm text-white/60 max-w-xs mx-auto text-balance">
                   {stat.label}
                 </p>
               </motion.div>

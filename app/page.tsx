@@ -3,28 +3,28 @@ import { useEffect, useState } from "react";
 import { About } from "./components/organisms/About";
 import { Hero } from "./components/molecules/Hero";
 import { ProgramCards } from "./components/molecules/ProgramCards";
-import { Stats } from "./components/atoms/Stats";
-import { LoadingAnimation } from "./components/atoms/LoadingAnimation";
+import { LoadingAnimation } from "./components/animations/LoadingAnimation";
+import { Support } from "./components/molecules/Support";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false)
-    }, 1200)
-    return () => clearTimeout(timer)
-  }, [])
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   if (loading) {
-    return <LoadingAnimation />
+    return <LoadingAnimation />;
   }
   return (
     <main>
       <Hero />
-      <ProgramCards/>
+      <ProgramCards />
       <About />
-      <Stats />
+      <Support />
     </main>
   );
 }

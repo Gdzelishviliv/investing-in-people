@@ -37,7 +37,7 @@ export function ProgramCards() {
               viewport={{  amount: 0.2 }}
             >
               <Link href={program.link} className="group block">
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+                <div className="relative aspect-4/5 rounded-2xl overflow-hidden">
                   <Image
                     src={program.image}
                     alt={program.title}
@@ -48,7 +48,7 @@ export function ProgramCards() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/20 to-transparent" />
 
                   <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
                     <div>
