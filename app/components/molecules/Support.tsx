@@ -21,7 +21,7 @@ export const Support = () => {
         <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 justify-center items-center text-center max-w-4xl mx-auto">
           {/* Subtitle */}
           <div className="animate-fade-in">
-            <p className="text-orange-300 text-sm sm:text-base lg:text-lg font-semibold uppercase tracking-wider">
+            <p className="text-red-300 text-sm sm:text-base lg:text-lg font-semibold uppercase tracking-wider">
               Making a Difference
             </p>
           </div>
@@ -31,7 +31,7 @@ export const Support = () => {
           >
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
               Fundraising for the People and{" "}
-              <span className="bg-linear-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-red-400 to-red-300 bg-clip-text text-transparent">
                 Causes You Care About
               </span>
             </h1>
@@ -56,9 +56,9 @@ export const Support = () => {
               className="group relative cursor-pointer inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold uppercase tracking-wider text-white rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 ease-out"
               style={{
                 animation: isHovered ? "glowPulse 1.6s ease-in-out infinite" : "none",
-                background: "linear-gradient(135deg, #FF6B35 0%, #FF6B35 100%)",
+                background: "linear-gradient(135deg, #dbb9b9 0%, #a24b4b 100%)",
                 boxShadow: isHovered
-                  ? "0 12px 30px rgba(255,107,53,0.45), 0 0 18px rgba(255,107,53,0.6)"
+                  ? "0 12px 30px rgba(230,195,195,0.45), 0 0 18px rgba(230,195,195,0.6)"
                   : "0 6px 14px rgba(0,0,0,0.15)",
                 transform: isHovered ? "translateY(-2px)" : "translateY(0)",
               }}
@@ -91,7 +91,7 @@ export const Support = () => {
                 </svg>
               </span>
               <div
-                className="absolute inset-0 bg-linear-to-r from-orange-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-linear-to-r from-red-400 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ zIndex: -1 }}
               />
             </button>

@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-*{
+* {
   box-sizing: border-box;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -141,7 +141,19 @@ section {
 }
 
 @keyframes glowPulse {
-  0% { box-shadow: 0 12px 30px rgba(255,107,53,0.45), 0 0 18px rgba(255,107,53,0.4); }
-  50% { box-shadow: 0 16px 36px rgba(255,107,53,0.6), 0 0 28px rgba(255,107,53,0.7); }
-  100% { box-shadow: 0 12px 30px rgba(255,107,53,0.45), 0 0 18px rgba(255,107,53,0.4); }
+  0% {
+    box-shadow:
+      0 12px 30px rgba(139, 30, 30, 0.45),
+      0 0 18px rgba(139, 30, 30, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 16px 36px rgba(139, 30, 30, 0.6),
+      0 0 28px rgba(139, 30, 30, 0.7);
+  }
+  100% {
+    box-shadow:
+      0 12px 30px rgba(139, 30, 30, 0.45),
+      0 0 18px rgba(139, 30, 30, 0.4);
+  }
 }
