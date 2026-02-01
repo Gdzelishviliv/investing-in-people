@@ -146,13 +146,12 @@ export function Header() {
                     <div
                       className="
                         absolute left-0 top-full mt-2
-                        backdrop-blur-xl
                         min-w-55
                         border border-white/20
-                        bg-white/5  sm:rounded-xl hover:border-red-300/50 hover:bg-red-300/10 
+                        bg-white/10  sm:rounded-xl backdrop-blur-sm hover:border-red-300/50 hover:bg-red-300/10 
                         rounded-md shadow-lg
                         opacity-0 invisible
-                        translate-y-2
+                        translate-y-4
                         group-hover:opacity-100 group-hover:visible
                         group-hover:translate-y-0
                         transition-all duration-300
@@ -183,7 +182,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-[#FF6B35] transition"
+            className="lg:hidden p-2 text-[#dbb9b9] hover:text-[#8b1e1e] transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
