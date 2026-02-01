@@ -198,13 +198,13 @@ export function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden border-t border-white/20 bg-white/40 backdrop-blur-sm"
+              className="lg:hidden overflow-hidden "
             >
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col space-y-1 py-4"
+                className="flex flex-col space-y-1 py-4 bg-transparent"
               >
                 {navItems.map((item) => (
                   <div key={item.href}>
@@ -215,7 +215,7 @@ export function Header() {
                           expandedItem === item.href ? null : item.href,
                         )
                       }
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-700 hover:text-[#FF6B35] hover:bg-gray-50 transition"
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#dbb9b9] transition"
                     >
                       <Link href={item.href} className="flex-1 text-left">
                         {item.label}
@@ -249,7 +249,7 @@ export function Header() {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="overflow-hidden bg-gray-50"
+                          className="overflow-hidden bg-transparent"
                         >
                           {item.children.map((child, idx) => (
                             <motion.div
@@ -260,7 +260,7 @@ export function Header() {
                             >
                               <Link
                                 href={child.href}
-                                className="block px-8 py-2 text-sm text-gray-600 hover:text-[#FF6B35] hover:bg-white transition"
+                                className="block px-8 py-2 text-sm text-[#dbb9b9] transition"
                               >
                                 {child.label}
                               </Link>
