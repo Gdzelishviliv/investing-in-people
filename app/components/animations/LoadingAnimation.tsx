@@ -8,7 +8,7 @@ export function LoadingAnimation() {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-white flex items-center justify-center"
+      className="fixed inset-0 z-50 bg-[#e3e4e4] flex items-center justify-center"
     >
       <motion.div
         animate={{
@@ -20,7 +20,7 @@ export function LoadingAnimation() {
           ease: "easeInOut",
         }}
       >
-        <Heart className="w-16 h-16 text-[#FF6B35] fill-[#FF6B35]" />
+        <Heart className="w-16 h-16 text-[#7e1b1b] fill-[#7e1b1b]" />
       </motion.div>
     </motion.div>
   )

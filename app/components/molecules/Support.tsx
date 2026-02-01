@@ -15,7 +15,7 @@ export const Support = () => {
             "url(https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg)",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/35 to-black/50" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/35 to-black/50" />
       </div>
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-32">
         <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 justify-center items-center text-center max-w-4xl mx-auto">

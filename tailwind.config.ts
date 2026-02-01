@@ -5,10 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#2f6db3",
-        primaryDark: "#255a94",
+        primary: "#8b1e1e",
+        primaryDark: "#631515",
+        secondary:"#92959c",
         light: "#f4f6f8",
-        text: "#333333",
+        text: "#dbb9b9",
         muted: "#6b7280",
       },
       container: {

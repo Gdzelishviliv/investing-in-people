@@ -3,7 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Twitter, Facebook, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 const navItems = [
   {
@@ -15,7 +20,10 @@ const navItems = [
     label: "TEESSIDE",
     href: "/pages/teesside",
     children: [
-      { label: "International Centre", href: "/pages/teesside/international-centre" },
+      {
+        label: "International Centre",
+        href: "/pages/teesside/international-centre",
+      },
       { label: "Gardening Project", href: "/pages/teesside/gardening-project" },
       { label: "CYCLE RE-CYCLING", href: "/pages/teesside/recycling" },
     ],
@@ -53,22 +61,32 @@ const itemVariants = {
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const { scrollY } = useScroll();
+
+  const headerWidth = useTransform(scrollY, [0, 100], ["100%", "90%"]);
+  const headerPadding = useTransform(scrollY, [0, 100], ["16px", "4px"]);
+  const headerY = useTransform(scrollY, [0, 100], [0, 8]);
 
   return (
     <motion.header
+      style={{
+        width: headerWidth,
+        padding: headerPadding,
+        y: headerY,
+      }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-white/80 backdrop-blur-md border-b border-white/20 sticky top-0 z-50 shadow-sm"
+      transition={{ duration: 0.4 }}
+      className="border-b m-auto sticky top-0 z-50 shadow-sm bg-white/5 backdrop-blur-xl rounded-lg sm:rounded-xl p-4 sm:p-6 border border-white/20 hover:border-red-300/50 hover:bg-red-300/10 transition-all duration-300"
     >
-      <div className="bg-white/40 backdrop-blur-sm border-b border-white/20">
+      <div>
         <div className="container mx-auto px-4">
           <div className="flex justify-end gap-4 py-2">
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-[#FF6B35] transition"
+              className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
             >
               <Twitter className="h-5 w-5" />
             </a>
@@ -76,16 +94,16 @@ export function Header() {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-[#FF6B35] transition"
+              className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
             >
               <Facebook className="h-5 w-5" />
             </a>
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-3">
         <div className="flex items-center justify-between py-4">
-          <Link href="/" className="text-2xl font-bold text-[#FF6B35]">
+          <Link href="/" className="text-2xl font-bold text-[#dbb9b9]">
             IPC
           </Link>
 
@@ -100,41 +118,38 @@ export function Header() {
                     className={`
                       relative px-4 py-2 text-sm font-medium
                       transition-colors duration-300
-                      ${
-                        isActive
-                          ? "text-[#FF6B35]"
-                          : "text-gray-700 hover:text-[#FF6B35]"
+                      ${isActive
+                        ? "text-[#8b1e1e]"
+                        : "text-[#dbb9b9] hover:text-[#8b1e1e]"
                       }
                     `}
                   >
                     {item.label}
                     <span
-                      className={`absolute left-0 top-0 h-px bg-[#FF6B35] transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
+                      className={`absolute left-0 top-0 h-px bg-[#8b1e1e] transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
                     />
                     <span
-                      className={`absolute right-0 top-0 w-px bg-[#FF6B35] transition-all duration-300 delay-100 ${
-                        isActive ? "h-full" : "h-0 group-hover:h-full"
-                      }`}
+                      className={`absolute right-0 top-0 w-px bg-[#8b1e1e] transition-all duration-300 delay-100 ${isActive ? "h-full" : "h-0 group-hover:h-full"
+                        }`}
                     />
                     <span
-                      className={`absolute right-0 bottom-0 h-px bg-[#FF6B35] transition-all duration-300 delay-200 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
+                      className={`absolute right-0 bottom-0 h-px bg-[#8b1e1e] transition-all duration-300 delay-200 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
                     />
                     <span
-                      className={`absolute left-0 bottom-0 w-px bg-[#FF6B35] transition-all duration-300 delay-300 ${
-                        isActive ? "h-full" : "h-0 group-hover:h-full"
-                      }`}
+                      className={`absolute left-0 bottom-0 w-px bg-[#8b1e1e] transition-all duration-300 delay-300 ${isActive ? "h-full" : "h-0 group-hover:h-full"
+                        }`}
                     />
                   </Link>
                   {item.children && (
                     <div
                       className="
                         absolute left-0 top-full mt-2
+                        backdrop-blur-xl
                         min-w-55
-                        bg-white border border-gray-200
+                        border border-white/20
+                        bg-white/5  sm:rounded-xl hover:border-red-300/50 hover:bg-red-300/10 
                         rounded-md shadow-lg
                         opacity-0 invisible
                         translate-y-2
@@ -150,8 +165,8 @@ export function Header() {
                           href={child.href}
                           className="
                             block px-4 py-2 text-sm
-                            text-gray-700
-                             hover:text-[#FF6B35]
+                            text-[#dbb9b9]
+                            hover:text-[#8b1e1e]
                             transition-colors
                           "
                         >
@@ -198,7 +213,7 @@ export function Header() {
                       variants={itemVariants}
                       onClick={() =>
                         setExpandedItem(
-                          expandedItem === item.href ? null : item.href
+                          expandedItem === item.href ? null : item.href,
                         )
                       }
                       className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-700 hover:text-[#FF6B35] hover:bg-gray-50 transition"

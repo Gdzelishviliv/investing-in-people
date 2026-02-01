@@ -25,7 +25,7 @@ const programs = [
 
 export function ProgramCards() {
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-16 md:py-24 bg-[#e3e4e4]">
       <div className="container mx-auto px-4">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {programs.map((program, index) => (
