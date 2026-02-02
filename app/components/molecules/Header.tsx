@@ -64,7 +64,7 @@ export function Header() {
   const { scrollY } = useScroll();
 
   const headerWidth = useTransform(scrollY, [0, 100], ["100%", "90%"]);
-  const headerPadding = useTransform(scrollY, [0, 100], ["16px", "4px"]);
+  const headerPadding = useTransform(scrollY, [0, 100], ["16px", "16px"]);
   const headerY = useTransform(scrollY, [0, 100], [0, 8]);
 
   return (
@@ -77,11 +77,11 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
-      className="border-b m-auto sticky top-0 z-50 shadow-sm bg-white/5 backdrop-blur-xl rounded-lg sm:rounded-xl p-4 sm:p-6 border border-white/20 hover:border-red-300/50 hover:bg-red-300/10 transition-all duration-300"
+      className="flex gap-4 flex-col border-b m-auto sticky top-0 z-50 shadow-sm bg-neutral-900/80 backdrop-blur-xl rounded-lg sm:rounded-xl sm:p-6 border border-white/20 hover:border-red-300/50  transition-all duration-300"
     >
       <div>
-        <div className="container mx-auto px-4">
-          <div className="flex justify-end gap-4 py-2">
+        <div className="container mx-auto">
+          <div className="flex justify-end gap-4">
             <a
               href="https://twitter.com"
               target="_blank"
@@ -102,11 +102,10 @@ export function Header() {
         </div>
       </div>
       <div className="container mx-auto px-3">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-[#dbb9b9]">
             IPC
           </Link>
-
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item, index) => {
@@ -116,7 +115,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={`
-                      relative px-4 py-2 text-sm font-medium
+                      relative px-2 xl:px-4 py-2 text-sm font-medium
                       transition-colors duration-300
                       ${isActive
                         ? "text-[#8b1e1e]"
@@ -125,7 +124,7 @@ export function Header() {
                     `}
                   >
                     {item.label}
-                    <span
+                    {/* <span
                       className={`absolute left-0 top-0 h-px bg-[#8b1e1e] transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
                         }`}
                     />
@@ -140,45 +139,44 @@ export function Header() {
                     <span
                       className={`absolute left-0 bottom-0 w-px bg-[#8b1e1e] transition-all duration-300 delay-300 ${isActive ? "h-full" : "h-0 group-hover:h-full"
                         }`}
+                    /> */}
+                    <span
+                      className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
                     />
                   </Link>
                   {item.children && (
                     <div
                       className="
-                        absolute left-0 top-full mt-2
-                        min-w-55
-                        border border-white/20
-                        bg-white/10  sm:rounded-xl backdrop-blur-sm hover:border-red-300/50 hover:bg-red-300/10 
-                        rounded-md shadow-lg
-                        opacity-0 invisible
-                        translate-y-4
-                        group-hover:opacity-100 group-hover:visible
-                        group-hover:translate-y-0
-                        transition-all duration-300
-                        z-50
-                      "
+                  absolute left-0 top-full pt-4
+                  min-w-60
+                  opacity-0 invisible translate-y-2
+                  group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                  transition-all duration-300 ease-out
+                  z-50
+                "
                     >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="
-                            block px-4 py-2 text-sm
-                            text-[#dbb9b9]
-                            hover:text-[#8b1e1e]
-                            transition-colors
-                          "
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      <div className="bg-neutral-900/95 backdrop-blur-xl border border-white/10 hover:border-red-300/50 duration-300 rounded-xl shadow-2xl overflow-hidden p-2">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="
+                        block px-4 py-3 text-sm font-medium rounded-lg
+                        text-gray-300 hover:text-white hover:bg-white/10
+                        transition-all duration-200
+                      "
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
               );
             })}
           </nav>
-
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
@@ -189,7 +187,6 @@ export function Header() {
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </motion.button>
         </div>
-
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
@@ -240,7 +237,6 @@ export function Header() {
                         </motion.svg>
                       )}
                     </motion.button>
-
                     {/* Submenu */}
                     <AnimatePresence>
                       {item.children && expandedItem === item.href && (

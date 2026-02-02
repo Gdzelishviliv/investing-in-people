@@ -16,10 +16,6 @@ body {
   background-color: #e3e4e4;
 }
 
-section {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
