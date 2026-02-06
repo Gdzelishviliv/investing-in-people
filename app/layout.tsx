@@ -21,7 +21,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`
+          ${inter.className}
+          min-h-dvh
+          bg-linear-to-br
+          from-[hsl(0,57%,79%)]
+          via-[hsl(0,73%,77%)]
+          to-[hsl(0,88%,56%)]
+        `}
+      >
         <Header />
         {children}
         <Footer />
