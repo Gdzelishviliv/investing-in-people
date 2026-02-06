@@ -65,7 +65,7 @@ export function Header() {
 
   const headerWidth = useTransform(scrollY, [0, 100], ["100%", "90%"]);
   const headerPadding = useTransform(scrollY, [0, 100], ["16px", "16px"]);
-  const headerY = useTransform(scrollY, [0, 100], [0, 8]);
+  const headerY = useTransform(scrollY, [0, 100], [0, 0]);
 
   return (
     <motion.header
@@ -77,7 +77,7 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
-      className="flex gap-4 flex-col border-b m-auto sticky top-0 z-50 shadow-sm bg-neutral-900/80 backdrop-blur-xl rounded-lg sm:rounded-xl sm:p-6 border border-white/20 hover:border-red-300/50  transition-all duration-300"
+      className="flex gap-4 flex-col border-b m-auto sticky top-0 z-50 shadow-sm bg-neutral-900/80 backdrop-blur-xl rounded-b-lg sm:rounded-b-xl sm:p-6 border border-t-0 border-white/20 hover:border-red-300/50  transition-all duration-300"
     >
       <div>
         <div className="container mx-auto">
@@ -124,22 +124,6 @@ export function Header() {
                     `}
                   >
                     {item.label}
-                    {/* <span
-                      className={`absolute left-0 top-0 h-px bg-[#8b1e1e] transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
-                        }`}
-                    />
-                    <span
-                      className={`absolute right-0 top-0 w-px bg-[#8b1e1e] transition-all duration-300 delay-100 ${isActive ? "h-full" : "h-0 group-hover:h-full"
-                        }`}
-                    />
-                    <span
-                      className={`absolute right-0 bottom-0 h-px bg-[#8b1e1e] transition-all duration-300 delay-200 ${isActive ? "w-full" : "w-0 group-hover:w-full"
-                        }`}
-                    />
-                    <span
-                      className={`absolute left-0 bottom-0 w-px bg-[#8b1e1e] transition-all duration-300 delay-300 ${isActive ? "h-full" : "h-0 group-hover:h-full"
-                        }`}
-                    /> */}
                     <span
                       className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
                         }`}
