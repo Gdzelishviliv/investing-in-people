@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function About() {
   return (
     <section className="py-20 bg-[#e3e4e4]">
-      <div className="container xl:flex gap-15 mx-auto">
+      <div className="container xl:flex gap-15 mx-auto max-sm:px-2.5">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -40,13 +40,13 @@ export function About() {
             viewport={{ amount: 0.2 }}
             className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4"
           >
-            <p>
+            <p className="max-sm:text-center">
               Investing in People and Culture (IPC) is a registered charity that
               promotes the social and economic inclusion of people who are
               seeking asylum, refugees, and other new and emerging minority
               communities in the North East of England.
             </p>
-            <p>
+            <p className="max-sm:text-center">
               Our aim is to ensure that everyone who comes to Teesside and
               Tyneside as a refugee or seeking asylum has the opportunity to
               envisage their future in the North East. We deliver employability
@@ -55,7 +55,7 @@ export function About() {
               country. We also organise and facilitate social and cultural
               events that promote cross-cultural integration.
             </p>
-            <p>
+            <p className="max-sm:text-center">
               Many of our programmes bring people together through shared
               activities such as befriending, sport and gardening. We advocate
               for refugees and new communities, providing services and

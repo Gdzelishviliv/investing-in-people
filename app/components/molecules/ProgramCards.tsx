@@ -42,7 +42,7 @@ export function ProgramCards() {
               className="group block relative rounded-2xl overflow-hidden"
             >
               <Link href={program.link}>
-                <div className="relative aspect-4/5 rounded-2xl overflow-hidden">
+                <div className="relative aspect-4/5 rounded-2xl overflow-hidden max-sm:max-h-87.5 max-sm:w-full">
                   {/* Image */}
                   <Image
                     src={program.image}

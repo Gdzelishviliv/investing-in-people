@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Twitter, Facebook, Menu, X } from "lucide-react";
 import {
@@ -9,6 +9,8 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+
+/* -------------------- NAV DATA -------------------- */
 
 const navItems = [
   {
@@ -28,44 +30,66 @@ const navItems = [
       { label: "CYCLE RE-CYCLING", href: "/pages/teesside/recycling" },
     ],
   },
-  {
-    label: "TYNESIDE",
-    href: "/tyneside",
-  },
+  { label: "TYNESIDE", href: "/tyneside" },
   { label: "OVERSEAS DOCTORS", href: "/overseas-doctors" },
   { label: "BEFRIENDING", href: "/befriending" },
   { label: "GALLERY", href: "/gallery" },
   { label: "CONTACT", href: "/contact" },
 ];
 
+/* -------------------- ANIMATION VARIANTS -------------------- */
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.3 },
-  },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
 };
+
+/* -------------------- MEDIA QUERY HOOK -------------------- */
+
+function useIsMobile(breakpoint = 1024) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+
+    const handler = () => setIsMobile(mq.matches);
+    handler();
+
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
+/* -------------------- HEADER COMPONENT -------------------- */
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+
+  const isMobile = useIsMobile();
   const { scrollY } = useScroll();
 
+  /* Layout transforms */
   const headerWidth = useTransform(scrollY, [0, 100], ["100%", "90%"]);
   const headerPadding = useTransform(scrollY, [0, 100], ["16px", "16px"]);
-  const headerY = useTransform(scrollY, [0, 100], [0, 0]);
+
+  /* Y offset */
+  const headerYDesktop = useTransform(scrollY, [0, 100], [0, 0]);
+  const headerYMobile = useTransform(scrollY, [0, 100], [0, 8]);
+  const headerY = isMobile ? headerYMobile : headerYDesktop;
+
+  /* Desktop-only bottom radius */
+  const desktopRadius = useTransform(scrollY, [0, 80], ["0px", "16px"]);
 
   return (
     <motion.header
@@ -73,11 +97,32 @@ export function Header() {
         width: headerWidth,
         padding: headerPadding,
         y: headerY,
+        ...(isMobile
+          ? {}
+          : {
+            borderBottomLeftRadius: desktopRadius,
+            borderBottomRightRadius: desktopRadius,
+          }),
       }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
-      className="flex gap-4 flex-col border-b m-auto sticky top-0 z-50 shadow-sm bg-neutral-900/80 backdrop-blur-xl rounded-b-lg sm:rounded-b-xl sm:p-6 border border-t-0 border-white/20 hover:border-red-300/50  transition-all duration-300"
+      className="
+        flex flex-col gap-4
+        m-auto sticky top-0 z-50
+        bg-neutral-900/80 backdrop-blur-xl
+        shadow-sm
+        border border-t-0 border-white/20
+        hover:border-red-300/50
+        transition-all duration-300
+
+        /* MOBILE */
+        rounded-xl
+
+        /* DESKTOP RESET */
+        lg:rounded-none
+        sm:p-6
+      "
     >
       <div>
         <div className="container mx-auto">
@@ -106,7 +151,8 @@ export function Header() {
           <Link href="/" className="text-2xl font-bold text-[#dbb9b9]">
             IPC
           </Link>
-          {/* Desktop Navigation */}
+
+          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item, index) => {
               const isActive = index === 0;

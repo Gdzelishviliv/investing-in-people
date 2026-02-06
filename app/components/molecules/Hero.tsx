@@ -22,7 +22,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative bg-black bg-blend-luminosity text-white overflow-hidden h-[600px]">
+    <section className="relative bg-black bg-blend-luminosity text-white overflow-hidden h-150">
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1.05 }}
