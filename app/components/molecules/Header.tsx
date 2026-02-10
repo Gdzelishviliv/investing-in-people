@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Twitter, Facebook, Menu, X } from "lucide-react";
 import {
   motion,
@@ -10,7 +9,33 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { navItems } from "@/app/constants/navigationData";
+
+/* -------------------- NAV DATA -------------------- */
+
+const navItems = [
+  {
+    label: "HOME",
+    href: "/",
+    children: [{ label: "Accessibility", href: "/accessibility" }],
+  },
+  {
+    label: "TEESSIDE",
+    href: "/pages/teesside",
+    children: [
+      {
+        label: "International Centre",
+        href: "/pages/teesside/international-centre",
+      },
+      { label: "Gardening Project", href: "/pages/teesside/gardening-project" },
+      { label: "CYCLE RE-CYCLING", href: "/pages/teesside/recycling" },
+    ],
+  },
+  { label: "TYNESIDE", href: "/tyneside" },
+  { label: "OVERSEAS DOCTORS", href: "/overseas-doctors" },
+  { label: "BEFRIENDING", href: "/befriending" },
+  { label: "GALLERY", href: "/gallery" },
+  { label: "CONTACT", href: "/contact" },
+];
 
 /* -------------------- ANIMATION VARIANTS -------------------- */
 
@@ -50,7 +75,6 @@ function useIsMobile(breakpoint = 1024) {
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
-  const pathname = usePathname();
 
   const isMobile = useIsMobile();
   const { scrollY } = useScroll();
@@ -83,7 +107,22 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
-      className="flex flex-col gap-4 m-auto sticky top-0 z-50 glass-dark shadow-lg border border-t-0 border-white/10 hover:border-[#dbb9b9]/30 transition-all duration-300 rounded-xl lg:rounded-none sm:p-6"
+      className="
+        flex flex-col gap-4
+        m-auto sticky top-0 z-50
+        bg-neutral-900/80 backdrop-blur-xl
+        shadow-sm
+        border border-t-0 border-white/20
+        hover:border-red-300/50
+        transition-all duration-300
+
+        /* MOBILE */
+        rounded-xl
+
+        /* DESKTOP RESET */
+        lg:rounded-none
+        sm:p-6
+      "
     >
       <div>
         <div className="container mx-auto">
@@ -92,7 +131,7 @@ export function Header() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#dbb9b9] hover:text-white transition-colors duration-300"
+              className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
             >
               <Twitter className="h-5 w-5" />
             </a>
@@ -100,7 +139,7 @@ export function Header() {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#dbb9b9] hover:text-white transition-colors duration-300"
+              className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
             >
               <Facebook className="h-5 w-5" />
             </a>
@@ -109,27 +148,31 @@ export function Header() {
       </div>
       <div className="container mx-auto px-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-[#dbb9b9] hover:text-white transition-colors duration-300">
+          <Link href="/" className="text-2xl font-bold text-[#dbb9b9]">
             IPC
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
+            {navItems.map((item, index) => {
+              const isActive = index === 0;
               return (
                 <div key={item.href} className="relative group">
                   <Link
                     href={item.href}
-                    className={`relative px-2 xl:px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                      isActive ? "text-white" : "text-[#dbb9b9] hover:text-white"
-                    }`}
+                    className={`
+                      relative px-2 xl:px-4 py-2 text-sm font-medium
+                      transition-colors duration-300
+                      ${isActive
+                        ? "text-[#8b1e1e]"
+                        : "text-[#dbb9b9] hover:text-[#8b1e1e]"
+                      }
+                    `}
                   >
                     {item.label}
                     <span
-                      className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
+                      className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
                     />
                   </Link>
                   {item.children && (
@@ -143,7 +186,7 @@ export function Header() {
                   z-50
                 "
                     >
-                      <div className="glass-dark border border-white/10 hover:border-[#dbb9b9]/30 duration-300 rounded-xl shadow-2xl overflow-hidden p-2">
+                      <div className="bg-neutral-900/95 backdrop-blur-xl border border-white/10 hover:border-red-300/50 duration-300 rounded-xl shadow-2xl overflow-hidden p-2">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
@@ -167,7 +210,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-[#dbb9b9] hover:text-white transition-colors duration-300"
+            className="lg:hidden p-2 text-[#dbb9b9] hover:text-[#8b1e1e] transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -190,9 +233,7 @@ export function Header() {
                 animate="visible"
                 className="flex flex-col space-y-1 py-4 bg-transparent"
               >
-                {navItems.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
+                {navItems.map((item) => (
                   <div key={item.href}>
                     <motion.button
                       variants={itemVariants}
@@ -201,9 +242,7 @@ export function Header() {
                           expandedItem === item.href ? null : item.href,
                         )
                       }
-                      className={`w-full flex items-center justify-between px-4 py-3 text-sm font-medium transition ${
-                        isActive ? "text-white" : "text-[#dbb9b9]"
-                      }`}
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#dbb9b9] transition"
                     >
                       <Link href={item.href} className="flex-1 text-left">
                         {item.label}
@@ -257,8 +296,7 @@ export function Header() {
                       )}
                     </AnimatePresence>
                   </div>
-                );
-                })}
+                ))}
               </motion.div>
             </motion.nav>
           )}

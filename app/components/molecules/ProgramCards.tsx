@@ -1,10 +1,30 @@
-"use client";
+"use client"
 
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { programs } from "@/app/constants/programsData";
+import { ArrowRight } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { motion } from "framer-motion"
+
+const programs = [
+  {
+    title: "Befriend a Refugee",
+    image: "https://i-p-c.org/wp-content/uploads/2022/03/0_ATR_MGA_300421mgaBini.jpg",
+    link: "/befriending",
+    accent: "#7dd3fc", // soft blue
+  },
+  {
+    title: "Overseas Doctors",
+    image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg",
+    link: "/repod",
+    accent: "#86efac", // soft green
+  },
+  {
+    title: "Integration Activities",
+    image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_internationalwomensday-scaled.jpg",
+    link: "/integration",
+    accent: "#facc15", // warm gold
+  },
+]
 
 export function ProgramCards() {
   return (
