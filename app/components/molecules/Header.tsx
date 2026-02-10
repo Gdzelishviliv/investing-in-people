@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Twitter, Facebook, Menu, X } from "lucide-react";
 import {
   motion,
@@ -75,6 +76,7 @@ function useIsMobile(breakpoint = 1024) {
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const pathname = usePathname();
 
   const isMobile = useIsMobile();
   const { scrollY } = useScroll();
@@ -139,8 +141,8 @@ export function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.map((item, index) => {
-              const isActive = index === 0;
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
               return (
                 <div key={item.href} className="relative group">
                   <Link
@@ -151,8 +153,9 @@ export function Header() {
                   >
                     {item.label}
                     <span
-                      className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
-                        }`}
+                      className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
                     />
                   </Link>
                   {item.children && (
@@ -213,7 +216,9 @@ export function Header() {
                 animate="visible"
                 className="flex flex-col space-y-1 py-4 bg-transparent"
               >
-                {navItems.map((item) => (
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
                   <div key={item.href}>
                     <motion.button
                       variants={itemVariants}
@@ -222,7 +227,9 @@ export function Header() {
                           expandedItem === item.href ? null : item.href,
                         )
                       }
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#dbb9b9] transition"
+                      className={`w-full flex items-center justify-between px-4 py-3 text-sm font-medium transition ${
+                        isActive ? "text-white" : "text-[#dbb9b9]"
+                      }`}
                     >
                       <Link href={item.href} className="flex-1 text-left">
                         {item.label}
@@ -276,7 +283,8 @@ export function Header() {
                       )}
                     </AnimatePresence>
                   </div>
-                ))}
+                );
+                })}
               </motion.div>
             </motion.nav>
           )}
