@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, scale } from "framer-motion";
 import { Network, Handshake, Users, ThumbsUp } from "lucide-react";
-import { filter } from "framer-motion/client";
 
 const statistics = [
   {

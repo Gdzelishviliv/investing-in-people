@@ -33,7 +33,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#8b1e1e" />
       </head>
       <body className={`${inter.className} min-h-screen`}>
-        <div className="fixed inset-0 bg-linear-to-br from-[#f4a5a5] via-[#f28a8a] to-[#e66b6b] -z-10" />
+        <div className="fixed inset-0 bg-[#e3e4e4] -z-10" />
         <div className="relative mx-auto max-w-480 min-h-screen flex flex-col bg-[#f5f7fa]/95 shadow-2xl">
           <Header />
           <main className="grow">{children}</main>

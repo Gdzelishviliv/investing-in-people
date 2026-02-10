@@ -33,8 +33,8 @@ const navItems = [
   { label: "TYNESIDE", href: "/tyneside" },
   { label: "OVERSEAS DOCTORS", href: "/overseas-doctors" },
   { label: "BEFRIENDING", href: "/befriending" },
-  { label: "GALLERY", href: "/gallery" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "GALLERY", href: "/pages/gallery" },
+  { label: "CONTACT", href: "/pages/contact" },
 ];
 
 /* -------------------- ANIMATION VARIANTS -------------------- */
@@ -144,7 +144,7 @@ export function Header() {
       <div className="w-full">
         <div className="container mx-auto px-0">
           <div className="flex items-center justify-between gap-4">
-            <Link href="/" className="text-2xl md:text-3xl font-bold text-[#dbb9b9] flex-shrink-0">
+            <Link href="/" className="text-2xl md:text-3xl font-bold text-[#dbb9b9] shrink-0">
               IPC
             </Link>
 
@@ -272,7 +272,7 @@ export function Header() {
                             rotate: expandedItem === item.href ? 180 : 0,
                           }}
                           transition={{ duration: 0.2 }}
-                          className="h-4 w-4 ml-2 flex-shrink-0"
+                          className="h-4 w-4 ml-2 shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
