@@ -22,11 +22,12 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative bg-black bg-blend-luminosity text-white overflow-hidden h-150">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Background Image */}
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1.05 }}
-        animate={{ scale: 1.20 }}
+        animate={{ scale: 1.2 }}
         transition={{
           duration: 20,
           ease: "linear",
@@ -36,40 +37,58 @@ export function Hero() {
         style={{
           backgroundImage: `url("https://i-p-c.org/wp-content/uploads/2022/03/footy-pic-4_ipc-scaled.jpeg")`,
           backgroundSize: "cover",
+          backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           filter: "grayscale(100%) contrast(1.1) brightness(0.7)",
         }}
       />
 
-      <div className="container mx-auto px-4 py-32 relative z-10">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/30 to-black/50" />
+
+      {/* Content */}
+      <div className="container mx-auto px-4 py-20 sm:py-32 relative z-10 flex items-center justify-center min-h-screen">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{amount:0.2}}
+            animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center space-y-6"
+            className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8"
           >
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-balance">
+            <motion.h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance text-white"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               {slides[currentSlide].title}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 text-balance">
+            </motion.h1>
+            <motion.p 
+              className="text-lg sm:text-xl md:text-2xl text-gray-200 text-balance max-w-2xl mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
               {slides[currentSlide].subtitle}
-            </p>
+            </motion.p>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {slides.map((_, index) => (
-          <button
+          <motion.button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all ${
-              index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/50"
+            className={`rounded-full transition-all ${
+              index === currentSlide
+                ? "h-2 w-8 bg-white"
+                : "h-2 w-2 bg-white/50 hover:bg-white/75"
             }`}
+            whileHover={{ scale: 1.2 }}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
