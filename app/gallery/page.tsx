@@ -23,7 +23,6 @@ export default function GalleryPage() {
       alt: "Cultural Event",
       title: "Celebrating Culture",
     },
-    // Add more images as needed
   ];
 
   return (
