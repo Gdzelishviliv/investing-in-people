@@ -5,37 +5,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "rgb(var(--primary) / <alpha-value>)",
-        "primary-dark": "#631515",
-        secondary: "#92959c",
-        accent: "#dbb9b9",
+        primary: "#8b1e1e",
+        primaryDark: "#631515",
+        secondary:"#92959c",
         light: "#f4f6f8",
+        text: "#dbb9b9",
         muted: "#6b7280",
-      },
-      fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-      },
-      spacing: {
-        "62.5": "15.625rem",
-        "87.5": "21.875rem",
       },
       container: {
         center: true,
         padding: "1rem",
-      },
-      animation: {
-        "fade-in": "fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
-        "fade-in-up": "fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
-        "fade-in-down": "fadeInDown 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
-        "slide-in-right": "slideInRight 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
-        "slide-in-left": "slideInLeft 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
-        "scale-up": "scaleUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
-        "float": "float 3s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
-      },
-      backgroundImage: {
-        "linear-to-b": "linear-gradient(to bottom, var(--tw-gradient-stops))",
-        "linear-to-r": "linear-gradient(to right, var(--tw-gradient-stops))",
-        "linear-to-br": "linear-gradient(to bottom right, var(--tw-gradient-stops))",
       },
     },
   },

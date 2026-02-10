@@ -12,13 +12,6 @@ const inter = Inter({
 export const metadata = {
   title: "Investing in People and Culture",
   description: "Supporting refugees, asylum seekers, and minority communities",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
-  themeColor: "#8b1e1e",
 };
 
 export default function RootLayout({
@@ -27,16 +20,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="theme-color" content="#8b1e1e" />
-      </head>
-      <body className={`${inter.className} min-h-screen bg-background text-foreground`}>
-        <div className="flex flex-col min-h-screen mx-auto max-w-screen-2xl">
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
+    <html lang="en">
+      <body
+        className={`
+          ${inter.className}
+          min-h-dvh
+          bg-linear-to-br
+          from-[hsl(0,57%,79%)]
+          via-[hsl(0,73%,77%)]
+          to-[hsl(0,88%,56%)]
+        `}
+      >
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

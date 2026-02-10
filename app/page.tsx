@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { About } from "./components/organisms/About";
 import { Hero } from "./components/molecules/Hero";
@@ -20,13 +19,12 @@ export default function Home() {
   if (loading) {
     return <LoadingAnimation />;
   }
-
   return (
-    <>
+    <main>
       <Hero />
       <ProgramCards />
       <About />
       <Support />
-    </>
+    </main>
   );
 }

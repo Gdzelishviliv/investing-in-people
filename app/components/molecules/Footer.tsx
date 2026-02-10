@@ -7,7 +7,7 @@ import { useState } from "react";
 export function Footer() {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <footer className="w-full bg-neutral-900 text-muted-foreground border-t border-white/10">
+    <footer className="bg-[#2f2f2f] text-[#e3e4e4]">
       {/* Main content */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -19,35 +19,41 @@ export function Footer() {
             viewport={{ once: true }}
             className="flex flex-col w-62.5 gap-5"
           >
-            <h2 className="text-3xl font-bold leading-snug max-w-md text-white">
+            <h2 className="text-3xl font-semibold leading-snug max-w-md">
               {FOOTER_CTA.title}
             </h2>
-            <motion.button
+            <button
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative cursor-pointer inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-semibold uppercase tracking-wider text-white rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300"
+
+              className="group relative cursor-pointer gap-1 inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base font-semibold uppercase tracking-wider text-white rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 ease-out"
               style={{
                 animation: isHovered ? "glowPulse 1.6s ease-in-out infinite" : "none",
                 background: "linear-gradient(135deg, #dbb9b9 0%, #a24b4b 100%)",
                 boxShadow: isHovered
-                  ? "0 12px 30px rgba(219, 185, 185, 0.5), 0 0 28px rgba(219, 185, 185, 0.6)"
-                  : "0 6px 14px rgba(0, 0, 0, 0.2)",
+                  ? "0 12px 30px rgba(230,195,195,0.45), 0 0 18px rgba(230,195,195,0.6)"
+                  : "0 6px 14px rgba(0,0,0,0.15)",
+                transform: isHovered ? "translateY(-2px)" : "translateY(0)",
               }}
             >
               <div
                 className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20"
                 style={{
-                  transform: isHovered ? "translateX(100%)" : "translateX(-100%)",
+                  transform: isHovered
+                    ? "translateX(100%)"
+                    : "translateX(-100%)",
                   transition: "transform 0.5s",
                 }}
               />
-              <span className="relative z-10 bg-white text-primary p-2 rounded-full">
-                <FOOTER_CTA.button.icon size={18} fill="currentColor" />
+              <div
+                className="absolute inset-0 bg-linear-to-r from-red-400 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ zIndex: -1 }}
+              />
+              <span className="bg-white text-red-500 p-2 rounded-full">
+                <FOOTER_CTA.button.icon size={16} fill="currentColor" />
               </span>
-              <span className="relative z-10">{FOOTER_CTA.button.label}</span>
-            </motion.button>
+              {FOOTER_CTA.button.label}
+            </button>
           </motion.div>
           {/* Contact */}
           <motion.div
@@ -56,39 +62,34 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold mb-6 text-white">
+            <h3 className="text-xl font-semibold mb-6">
               {FOOTER_CONTACT.title}
             </h3>
 
-            <ul className="space-y-5">
+            <ul className="space-y-5 text-slate-300">
               {FOOTER_CONTACT.items.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
-                  <motion.li
+                  <li
                     key={item.id}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    className={`flex gap-4 ${
-                      index !== FOOTER_CONTACT.items.length - 1
-                        ? "border-b border-white/10 pb-4"
-                        : ""
-                    }`}
+                    className={`flex gap-4 ${index !== FOOTER_CONTACT.items.length - 1
+                      ? "border-b border-white/10 pb-4"
+                      : ""
+                      }`}
                   >
-                    <Icon className="text-accent mt-1 flex-shrink-0" size={20} />
+                    <Icon className="text-[#8b1e1e] mt-1" size={18} />
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="text-muted-foreground hover:text-accent transition-colors duration-300"
+                        className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
                       >
                         {item.text}
                       </a>
                     ) : (
-                      <span className="text-muted-foreground">{item.text}</span>
+                      <span className="text-[#dbb9b9]">{item.text}</span>
                     )}
-                  </motion.li>
+                  </li>
                 );
               })}
             </ul>
@@ -96,11 +97,12 @@ export function Footer() {
         </div>
       </div>
       {/* Bottom bar */}
-      <div className="border-t border-white/10 py-6 sm:py-8 bg-neutral-950">
-        <div className="container text-center mx-auto px-4 text-xs sm:text-sm text-muted-foreground">
+      <div className="border-t border-white/10 py-6">
+        <div className="container text-center mx-auto px-4 text-sm text-[#e3e4e4]">
           <p>
             © {new Date().getFullYear()} {FOOTER_META.charityName}. Charity Number{" "}
-            {FOOTER_META.charityNumber}. Reg. Office: {FOOTER_META.registeredOffice}
+            {FOOTER_META.charityNumber}. Reg. Office:{" "}
+            {FOOTER_META.registeredOffice}
           </p>
         </div>
       </div>

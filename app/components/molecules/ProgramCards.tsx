@@ -28,81 +28,49 @@ const programs = [
 
 export function ProgramCards() {
   return (
-    <section className="w-full py-16 md:py-24 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.7,
-            ease: [0.25, 0.46, 0.45, 0.94]
-          }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-12 md:mb-16 lg:mb-20"
-        >
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
-            Our Programs
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Supporting Communities
-          </h2>
-          <div className="h-1 w-12 bg-primary mx-auto" />
-        </motion.div>
-
-        {/* Cards Grid */}
-        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="py-16 md:py-24 bg-[#e3e4e4]">
+      <div className="container mx-auto px-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {programs.map((program, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.7, 
-                delay: index * 0.12,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-              viewport={{ once: true, amount: 0.2 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ amount: 0.2 }}
               style={{ "--accent": program.accent } as React.CSSProperties}
-              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="group block relative rounded-2xl overflow-hidden"
             >
               <Link href={program.link}>
-                <div className="relative aspect-4/5 overflow-hidden">
+                <div className="relative aspect-4/5 rounded-2xl overflow-hidden max-sm:max-h-87.5 max-sm:w-full">
                   {/* Image */}
                   <Image
                     src={program.image}
                     alt={program.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale brightness-75 contrast-110"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 filter grayscale contrast-[1.1] brightness-[0.7]"
                   />
-
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/20 to-black/70 transition-all duration-500 group-hover:from-black/60 group-hover:via-black/30 group-hover:to-black/80" />
-
-                  {/* Content Container */}
-                  <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-between">
-                    {/* Title */}
-                    <div className="space-y-3">
-                      <h3 className="text-2xl sm:text-3xl font-bold leading-tight text-white transition-all duration-500 group-hover:-translate-y-1">
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/20 to-transparent" />
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+                    {/* Title & underline */}
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold leading-tight text-white transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent">
                         {program.title}
                       </h3>
-                      <motion.div
-                        className="h-1 w-1/2 bg-white/70 transition-all duration-500 group-hover:w-full group-hover:bg-accent"
-                        initial={{ width: "50%" }}
-                        whileHover={{ width: "100%" }}
-                      />
+                      <div className="h-0.5 mt-3 w-1/3 bg-white/70 transition-all duration-500 group-hover:w-full group-hover:bg-accent" />
                     </div>
-
-                    {/* Arrow Button */}
-                    <motion.div
-                      className="flex justify-end"
-                      whileHover={{ y: -4 }}
-                    >
-                      <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/30 text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-primary group-hover:shadow-lg">
-                        <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:translate-x-1" />
+                    {/* Arrow button */}
+                    <div className="flex justify-end">
+                      <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full
+                                      bg-white/10 backdrop-blur-md border border-white/20 text-white
+                                      transition-all duration-300 group-hover:scale-110 group-hover:bg-accent
+                                      group-hover:shadow-[0_0_20px_var(--accent)]">
+                        <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                       </div>
-                    </motion.div>
+                    </div>
                   </div>
                 </div>
               </Link>

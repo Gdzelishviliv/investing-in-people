@@ -88,19 +88,22 @@ export function Stats() {
   }, [hasAnimated]);
 
   return (
-    <section id="stats-section" className="w-full py-12 sm:py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="stats-section" className="py-20 bg-transparent">
+      <div className="container mx-auto px-4">
         <div
-          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 bg-white/8 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-10 border border-white/20 transition-all duration-300 hover:border-accent/50 hover:bg-white/12"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-6 border border-white/20 hover:border-red-300/50 hover:bg-red-300/10 transition-all duration-300"
           style={{
-            boxShadow: "0 0 24px rgba(0, 0, 0, 0.2)",
+            borderColor: "rgba(255,255,255,0.15)",
+            boxShadow: "0 0 0 rgba(242,166,166,0)",
           }}
           onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "rgba(230,195,195,0.6)";
             e.currentTarget.style.boxShadow =
-              "0 0 32px rgba(219, 185, 185, 0.25), 0 0 64px rgba(139, 30, 30, 0.15)";
+              "0 0 24px rgba(242,166,166,0.35), 0 0 56px rgba(242,166,166,0.25)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = "0 0 24px rgba(0, 0, 0, 0.2)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+            e.currentTarget.style.boxShadow = "0 0 0 rgba(242,166,166,0)";
           }}
         >
           {statistics.map((stat, index) => {
@@ -108,39 +111,43 @@ export function Stats() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  delay: index * 0.12, 
-                  duration: 0.7,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                viewport={{ once: true, amount: 0.5 }}
-                className="flex flex-col items-center text-center space-y-3 p-4 sm:p-6 rounded-lg hover:bg-white/5 transition-colors duration-300 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 1 }}
+                viewport={{ amount: 0.5 }}
+                className="relative text-center space-y-4 rounded-xl p-4 group"
               >
-                <motion.div
-                  animate={{
-                    filter: [
-                      `drop-shadow(0 0 0px ${stat.glow},0))`,
-                      `drop-shadow(0 0 12px ${stat.glow},0.45))`,
-                      `drop-shadow(0 0 0px ${stat.glow},0))`,
-                    ],
-                  }}
-                  transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
-                  whileHover={{
-                    scale: 1.2,
-                  }}
-                >
-                  <Icon
-                    className="w-12 h-12 sm:w-16 sm:h-16 transition-colors duration-300"
-                    strokeWidth={1.5}
-                    style={{ color: stat.color }}
-                  />
-                </motion.div>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums">
+                <div className="flex justify-center">
+                  <motion.div
+                    animate={{
+                      filter: [
+                        `drop-shadow(0 0 0px ${stat.glow},0))`,
+                        `drop-shadow(0 0 12px ${stat.glow},0.45))`,
+                        `drop-shadow(0 0 0px ${stat.glow},0))`,
+                      ],
+                    }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    whileHover={{
+                      scale: 1.25,
+                      rotate: 360,
+                      filter: `
+                        drop-shadow(0 0 8px ${stat.glow},0.9))
+                        drop-shadow(0 0 20px ${stat.glow},0.7))
+                        drop-shadow(0 0 40px ${stat.glow},0.5))
+                        `,
+                    }}
+                  >
+                    <Icon
+                      className="w-16 h-16 text-[#e6c3c3]"
+                      strokeWidth={1.5}
+                      style={{ color: stat.color }}
+                    />
+                  </motion.div>
+                </div>
+                <div className="text-5xl md:text-6xl font-bold text-white/85 tabular-nums">
                   {counts[index].toLocaleString()}
                 </div>
-                <p className="text-xs sm:text-sm text-gray-300 text-balance max-w-xs">
+                <p className="text-sm text-white/65 max-w-xs mx-auto text-balance">
                   {stat.label}
                 </p>
               </motion.div>
