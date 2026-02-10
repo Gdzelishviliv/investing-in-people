@@ -3,27 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import { galleryImages } from "@/app/constants/galleryData";
 
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-  const images = [
-    {
-      src: "https://i-p-c.org/wp-content/uploads/2022/03/footy-pic-4_ipc-scaled.jpeg",
-      alt: "Community Football Event",
-      title: "Football Together",
-    },
-    {
-      src: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_webcover-1-e1687948316485.jpg",
-      alt: "Community Gathering",
-      title: "Building Connections",
-    },
-    {
-      src: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg",
-      alt: "Cultural Event",
-      title: "Celebrating Culture",
-    },
-  ];
 
   return (
     <div className="w-full">
@@ -49,7 +32,7 @@ export default function GalleryPage() {
       <section className="py-16 sm:py-20 lg:py-24 bg-[#f5f7fa]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {images.map((image, index) => (
+            {galleryImages.map((image, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -95,8 +78,8 @@ export default function GalleryPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={images[selectedImage].src}
-              alt={images[selectedImage].alt}
+              src={galleryImages[selectedImage].src}
+              alt={galleryImages[selectedImage].alt}
               fill
               sizes="100vw"
               className="object-contain"

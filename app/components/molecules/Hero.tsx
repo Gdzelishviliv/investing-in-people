@@ -2,21 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const slides = [
-  {
-    title: "Welcome to Investing in People and Culture",
-    subtitle:
-      "Supporting refugees and people seeking asylum across the North East",
-  },
-];
+import { heroSlides } from "@/app/constants/heroData";
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
@@ -71,7 +64,7 @@ export function Hero() {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white"
               >
-                {slides[currentSlide].title}
+                {heroSlides[currentSlide].title}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -79,7 +72,7 @@ export function Hero() {
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto"
               >
-                {slides[currentSlide].subtitle}
+                {heroSlides[currentSlide].subtitle}
               </motion.p>
             </div>
           </motion.div>
@@ -87,9 +80,9 @@ export function Hero() {
       </div>
 
       {/* Slide Indicators */}
-      {slides.length > 1 && (
+      {heroSlides.length > 1 && (
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-          {slides.map((_, index) => (
+          {heroSlides.map((_, index) => (
             <motion.button
               key={index}
               onClick={() => setCurrentSlide(index)}

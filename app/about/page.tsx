@@ -1,32 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Users, Globe, Award } from "lucide-react";
+import { aboutValues } from "@/app/constants/aboutData";
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: Heart,
-      title: "Compassion",
-      description: "Supporting refugees and asylum seekers with empathy and understanding",
-    },
-    {
-      icon: Users,
-      title: "Community",
-      description: "Building connections and fostering integration in the North East",
-    },
-    {
-      icon: Globe,
-      title: "Inclusion",
-      description: "Promoting social and economic inclusion for all communities",
-    },
-    {
-      icon: Award,
-      title: "Excellence",
-      description: "Delivering high-quality services and support programs",
-    },
-  ];
-
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -101,7 +78,7 @@ export default function AboutPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {values.map((value, index) => (
+            {aboutValues.map((value, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
