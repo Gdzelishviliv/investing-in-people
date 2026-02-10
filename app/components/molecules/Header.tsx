@@ -97,35 +97,28 @@ export function Header() {
         width: headerWidth,
         padding: headerPadding,
         y: headerY,
-        ...(isMobile
-          ? {}
-          : {
-            borderBottomLeftRadius: desktopRadius,
-            borderBottomRightRadius: desktopRadius,
-          }),
+        borderBottomLeftRadius: isMobile ? "12px" : desktopRadius,
+        borderBottomRightRadius: isMobile ? "12px" : desktopRadius,
+        borderTopLeftRadius: isMobile ? "12px" : "0px",
+        borderTopRightRadius: isMobile ? "12px" : "0px",
       }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
       className="
-        flex flex-col gap-4
+        flex flex-col gap-3 md:gap-4
         m-auto sticky top-0 z-50
         bg-neutral-900/80 backdrop-blur-xl
         shadow-sm
         border border-t-0 border-white/20
         hover:border-red-300/50
         transition-all duration-300
-
-        /* MOBILE */
-        rounded-xl
-
-        /* DESKTOP RESET */
-        lg:rounded-none
-        sm:p-6
+        px-4 py-3 md:px-6 md:py-4
       "
     >
-      <div>
-        <div className="container mx-auto">
+      {/* Social Icons - Desktop only */}
+      <div className="hidden lg:block mb-4">
+        <div className="container mx-auto px-0">
           <div className="flex justify-end gap-4">
             <a
               href="https://twitter.com"
@@ -146,77 +139,103 @@ export function Header() {
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-3">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-[#dbb9b9]">
-            IPC
-          </Link>
+      
+      {/* Main Navigation Container */}
+      <div className="w-full">
+        <div className="container mx-auto px-0">
+          <div className="flex items-center justify-between gap-4">
+            <Link href="/" className="text-2xl md:text-3xl font-bold text-[#dbb9b9] flex-shrink-0">
+              IPC
+            </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {navItems.map((item, index) => {
-              const isActive = index === 0;
-              return (
-                <div key={item.href} className="relative group">
-                  <Link
-                    href={item.href}
-                    className={`
-                      relative px-2 xl:px-4 py-2 text-sm font-medium
-                      transition-colors duration-300
-                      ${isActive
-                        ? "text-[#8b1e1e]"
-                        : "text-[#dbb9b9] hover:text-[#8b1e1e]"
-                      }
-                    `}
-                  >
-                    {item.label}
-                    <span
-                      className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
-                        }`}
-                    />
-                  </Link>
-                  {item.children && (
-                    <div
-                      className="
-                  absolute left-0 top-full pt-4
-                  min-w-60
-                  opacity-0 invisible translate-y-2
-                  group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-                  transition-all duration-300 ease-out
-                  z-50
-                "
+            {/* Desktop nav */}
+            <nav className="hidden lg:flex items-center gap-1">
+              {navItems.map((item, index) => {
+                const isActive = index === 0;
+                return (
+                  <div key={item.href} className="relative group">
+                    <Link
+                      href={item.href}
+                      className={`
+                        relative px-3 xl:px-4 py-2 text-xs xl:text-sm font-medium whitespace-nowrap
+                        transition-colors duration-300
+                        ${isActive
+                          ? "text-[#8b1e1e]"
+                          : "text-[#dbb9b9] hover:text-[#8b1e1e]"
+                        }
+                      `}
                     >
-                      <div className="bg-neutral-900/95 backdrop-blur-xl border border-white/10 hover:border-red-300/50 duration-300 rounded-xl shadow-2xl overflow-hidden p-2">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="
-                        block px-4 py-3 text-sm font-medium rounded-lg
-                        text-gray-300 hover:text-white hover:bg-white/10
-                        transition-all duration-200
-                      "
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                      {item.label}
+                      <span
+                        className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-red-300 to-red-400 transition-all duration-300 ease-out origin-left rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                          }`}
+                      />
+                    </Link>
+                    {item.children && (
+                      <div
+                        className="
+                    absolute left-0 top-full pt-4
+                    min-w-60
+                    opacity-0 invisible translate-y-2
+                    group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                    transition-all duration-300 ease-out
+                    z-50
+                  "
+                      >
+                        <div className="bg-neutral-900/95 backdrop-blur-xl border border-white/10 hover:border-red-300/50 duration-300 rounded-xl shadow-2xl overflow-hidden p-2">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="
+                          block px-4 py-3 text-sm font-medium rounded-lg
+                          text-gray-300 hover:text-white hover:bg-white/10
+                          transition-all duration-200
+                        "
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
-          {/* Mobile Menu Button */}
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-[#dbb9b9] hover:text-[#8b1e1e] transition"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </motion.button>
+                    )}
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* Mobile and Tablet: Social Icons + Menu Button */}
+            <div className="flex items-center gap-3 lg:hidden">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              
+              {/* Mobile Menu Button */}
+              <motion.button
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 text-[#dbb9b9] hover:text-[#8b1e1e] transition ml-2"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </motion.button>
+            </div>
+          </div>
         </div>
+
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
@@ -225,7 +244,7 @@ export function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden "
+              className="lg:hidden overflow-hidden"
             >
               <motion.div
                 variants={containerVariants}
@@ -242,7 +261,7 @@ export function Header() {
                           expandedItem === item.href ? null : item.href,
                         )
                       }
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#dbb9b9] transition"
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm md:text-base font-medium text-[#dbb9b9] hover:text-[#8b1e1e] transition"
                     >
                       <Link href={item.href} className="flex-1 text-left">
                         {item.label}
@@ -253,7 +272,7 @@ export function Header() {
                             rotate: expandedItem === item.href ? 180 : 0,
                           }}
                           transition={{ duration: 0.2 }}
-                          className="h-4 w-4 ml-2"
+                          className="h-4 w-4 ml-2 flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -286,7 +305,7 @@ export function Header() {
                             >
                               <Link
                                 href={child.href}
-                                className="block px-8 py-2 text-sm text-[#dbb9b9] transition"
+                                className="block px-8 py-3 text-sm text-[#dbb9b9] hover:text-[#8b1e1e] transition"
                               >
                                 {child.label}
                               </Link>
