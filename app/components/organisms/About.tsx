@@ -9,9 +9,12 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image Section */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, x: -40, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ 
+              duration: 0.8,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
             viewport={{ once: true, amount: 0.2 }}
             className="order-2 lg:order-1"
           >
@@ -27,9 +30,12 @@ export function About() {
 
           {/* Content Section */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ 
+              duration: 0.8,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
             viewport={{ once: true, amount: 0.2 }}
             className="order-1 lg:order-2 flex flex-col justify-center space-y-8"
           >
@@ -37,17 +43,25 @@ export function About() {
             <div className="space-y-4">
               <motion.p
                 className="text-sm font-semibold text-primary uppercase tracking-widest"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  delay: 0.2,
+                  duration: 0.6,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
               >
                 About Our Charity
               </motion.p>
               <motion.h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground"
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                transition={{ 
+                  delay: 0.3,
+                  duration: 0.7,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
               >
                 Investing in People and Culture
               </motion.h2>

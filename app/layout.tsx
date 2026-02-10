@@ -32,9 +32,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#8b1e1e" />
       </head>
       <body className={`${inter.className} min-h-screen bg-background text-foreground`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <div className="flex flex-col min-h-screen mx-auto max-w-screen-2xl">
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

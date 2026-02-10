@@ -27,10 +27,10 @@ export function Hero() {
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1.05 }}
-        animate={{ scale: 1.2 }}
+        animate={{ scale: 1.15 }}
         transition={{
-          duration: 20,
-          ease: "linear",
+          duration: 25,
+          ease: "easeInOut",
           repeat: Infinity,
           repeatType: "mirror",
         }}
@@ -51,10 +51,13 @@ export function Hero() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.8 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ 
+              duration: 0.9,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
             className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8"
           >
             <motion.h1 

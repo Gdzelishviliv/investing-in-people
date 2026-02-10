@@ -26,10 +26,13 @@ export const Support = () => {
         <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12 justify-center items-center text-center max-w-4xl mx-auto">
           {/* Subtitle */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ 
+              duration: 0.7,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <p className="text-accent text-sm sm:text-base lg:text-lg font-semibold uppercase tracking-widest">
               Making a Difference
@@ -38,10 +41,14 @@ export const Support = () => {
 
           {/* Title */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.1,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight text-balance">
               Support the Causes{" "}
@@ -53,10 +60,14 @@ export const Support = () => {
 
           {/* Description */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.2,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <p className="text-base sm:text-lg lg:text-xl text-gray-100 max-w-2xl leading-relaxed">
               Every donation makes a real impact on the lives of refugees, asylum seekers, and communities we serve. Join us in making a difference.
@@ -65,10 +76,14 @@ export const Support = () => {
 
           {/* CTA Button */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.3,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <button
               onMouseEnter={() => setIsHovered(true)}

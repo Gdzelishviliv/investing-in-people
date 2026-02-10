@@ -24,8 +24,13 @@ const config: Config = {
         padding: "1rem",
       },
       animation: {
-        "fade-in": "fadeIn 0.6s ease-in-out",
-        "fade-in-up": "fadeInUp 0.6s ease-in-out",
+        "fade-in": "fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "fade-in-up": "fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "fade-in-down": "fadeInDown 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "slide-in-right": "slideInRight 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "slide-in-left": "slideInLeft 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "scale-up": "scaleUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+        "float": "float 3s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite",
       },
       backgroundImage: {
         "linear-to-b": "linear-gradient(to bottom, var(--tw-gradient-stops))",

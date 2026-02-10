@@ -108,9 +108,13 @@ export function Stats() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                  delay: index * 0.12, 
+                  duration: 0.7,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
                 viewport={{ once: true, amount: 0.5 }}
                 className="flex flex-col items-center text-center space-y-3 p-4 sm:p-6 rounded-lg hover:bg-white/5 transition-colors duration-300 group"
               >

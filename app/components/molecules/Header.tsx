@@ -49,7 +49,14 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { 
+      duration: 0.4,
+      ease: [0.25, 0.46, 0.45, 0.94]
+    } 
+  },
 };
 
 /* -------------------- MEDIA QUERY HOOK -------------------- */
@@ -104,9 +111,12 @@ export function Header() {
             borderBottomRightRadius: desktopRadius,
           }),
       }}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.4 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ 
+        duration: 0.5,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
       className="flex flex-col gap-4 m-auto sticky top-0 z-50 bg-neutral-900/90 backdrop-blur-xl shadow-md border border-t-0 border-white/20 hover:border-accent/50 transition-all duration-300 rounded-xl lg:rounded-none sm:p-6"
     >
       <div>

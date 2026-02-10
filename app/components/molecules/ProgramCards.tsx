@@ -32,10 +32,13 @@ export function ProgramCards() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ 
+            duration: 0.7,
+            ease: [0.25, 0.46, 0.45, 0.94]
+          }}
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
@@ -52,9 +55,13 @@ export function ProgramCards() {
           {programs.map((program, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.7, 
+                delay: index * 0.12,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
               viewport={{ once: true, amount: 0.2 }}
               style={{ "--accent": program.accent } as React.CSSProperties}
               className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
