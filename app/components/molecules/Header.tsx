@@ -107,22 +107,7 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
-      className="
-        flex flex-col gap-4
-        m-auto sticky top-0 z-50
-        bg-neutral-900/80 backdrop-blur-xl
-        shadow-sm
-        border border-t-0 border-white/20
-        hover:border-red-300/50
-        transition-all duration-300
-
-        /* MOBILE */
-        rounded-xl
-
-        /* DESKTOP RESET */
-        lg:rounded-none
-        sm:p-6
-      "
+      className="flex flex-col gap-4 m-auto sticky top-0 z-50 glass-dark shadow-lg border border-t-0 border-white/10 hover:border-[#dbb9b9]/30 transition-all duration-300 rounded-xl lg:rounded-none sm:p-6"
     >
       <div>
         <div className="container mx-auto">
@@ -131,7 +116,7 @@ export function Header() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
+              className="text-[#dbb9b9] hover:text-white transition-colors duration-300"
             >
               <Twitter className="h-5 w-5" />
             </a>
@@ -139,7 +124,7 @@ export function Header() {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#dbb9b9] hover:text-[#8b1e1e] transition"
+              className="text-[#dbb9b9] hover:text-white transition-colors duration-300"
             >
               <Facebook className="h-5 w-5" />
             </a>
@@ -148,7 +133,7 @@ export function Header() {
       </div>
       <div className="container mx-auto px-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-[#dbb9b9]">
+          <Link href="/" className="text-2xl font-bold text-[#dbb9b9] hover:text-white transition-colors duration-300">
             IPC
           </Link>
 
@@ -160,14 +145,9 @@ export function Header() {
                 <div key={item.href} className="relative group">
                   <Link
                     href={item.href}
-                    className={`
-                      relative px-2 xl:px-4 py-2 text-sm font-medium
-                      transition-colors duration-300
-                      ${isActive
-                        ? "text-[#8b1e1e]"
-                        : "text-[#dbb9b9] hover:text-[#8b1e1e]"
-                      }
-                    `}
+                    className={`relative px-2 xl:px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                      isActive ? "text-white" : "text-[#dbb9b9] hover:text-white"
+                    }`}
                   >
                     {item.label}
                     <span
@@ -186,7 +166,7 @@ export function Header() {
                   z-50
                 "
                     >
-                      <div className="bg-neutral-900/95 backdrop-blur-xl border border-white/10 hover:border-red-300/50 duration-300 rounded-xl shadow-2xl overflow-hidden p-2">
+                      <div className="glass-dark border border-white/10 hover:border-[#dbb9b9]/30 duration-300 rounded-xl shadow-2xl overflow-hidden p-2">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
@@ -210,7 +190,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-[#dbb9b9] hover:text-[#8b1e1e] transition"
+            className="lg:hidden p-2 text-[#dbb9b9] hover:text-white transition-colors duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >

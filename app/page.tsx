@@ -19,12 +19,13 @@ export default function Home() {
   if (loading) {
     return <LoadingAnimation />;
   }
+  
   return (
-    <main>
+    <>
       <Hero />
       <ProgramCards />
       <About />
       <Support />
-    </main>
+    </>
   );
 }
