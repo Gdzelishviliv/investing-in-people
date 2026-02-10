@@ -15,40 +15,9 @@ html, body {
   min-height: 100vh;
 }
 
-@theme inline {
-  --radius: 0.75rem;
-  --radius-sm: 0.5rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-}
-
-:root {
-  /* Brand Colors */
-  --primary: #8b1e1e;
-  --primary-dark: #631515;
-  --primary-light: #a24b4b;
-  
-  /* Accent Colors */
-  --accent: #dbb9b9;
-  --accent-dark: #c9a5a5;
-  
-  /* Neutral Colors */
-  --background: #f5f7fa;
-  --foreground: #1a1a1a;
-  --muted: #6b7280;
-  --muted-foreground: #9ca3af;
-  
-  /* UI Colors */
-  --border: #e5e7eb;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-}
-
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#f5f7fa] text-[#1a1a1a];
   }
   
   h1, h2, h3, h4, h5, h6 {

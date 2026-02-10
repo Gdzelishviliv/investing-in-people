@@ -26,7 +26,7 @@ export function About() {
           className=" xl:w-1/2 flex flex-col justify-center items-center xl:mt-0 mt-10"
         >
           <div className="text-center mb-8">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">
+            <p className="text-sm font-semibold text-[#8b1e1e] uppercase tracking-wide mb-2">
               Welcome to IPC Charity
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -38,7 +38,7 @@ export function About() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
             viewport={{ amount: 0.2 }}
-            className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4"
+            className="prose prose-lg max-w-none text-[#6b7280] leading-relaxed space-y-4"
           >
             <p className="max-sm:text-center">
               Investing in People and Culture (IPC) is a registered charity that

@@ -47,7 +47,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-background">
+      <section className="py-16 sm:py-20 lg:py-24 bg-[#f5f7fa]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {images.map((image, index) => (

@@ -48,7 +48,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-background">
+      <section className="py-16 sm:py-20 lg:py-24 bg-[#f5f7fa]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -57,10 +57,10 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-8 text-foreground">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-8 text-[#1a1a1a]">
               Our Mission
             </h2>
-            <div className="prose prose-lg max-w-none space-y-6 text-muted">
+            <div className="prose prose-lg max-w-none space-y-6 text-[#6b7280]">
               <p>
                 Investing in People and Culture (IPC) is a registered charity that promotes the
                 social and economic inclusion of people who are seeking asylum, refugees, and
@@ -92,10 +92,10 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-[#1a1a1a]">
               Our Values
             </h2>
-            <p className="text-lg text-muted max-w-2xl mx-auto">
+            <p className="text-lg text-[#6b7280] max-w-2xl mx-auto">
               The principles that guide our work every day
             </p>
           </motion.div>
@@ -113,8 +113,8 @@ export default function AboutPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#8b1e1e] text-white mb-4">
                   <value.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">{value.title}</h3>
-                <p className="text-muted">{value.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-[#1a1a1a]">{value.title}</h3>
+                <p className="text-[#6b7280]">{value.description}</p>
               </motion.div>
             ))}
           </div>

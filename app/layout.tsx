@@ -37,7 +37,7 @@ export default function RootLayout({
         <div className="fixed inset-0 bg-gradient-to-br from-[#f4a5a5] via-[#f28a8a] to-[#e66b6b] -z-10" />
         
         {/* Fixed width container */}
-        <div className="relative mx-auto max-w-[1920px] min-h-screen flex flex-col bg-background/95 shadow-2xl">
+        <div className="relative mx-auto max-w-[1920px] min-h-screen flex flex-col bg-[#f5f7fa]/95 shadow-2xl">
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />

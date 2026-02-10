@@ -40,7 +40,7 @@ export function ScrollToTop() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 sm:p-4 rounded-full bg-primary hover:bg-primary-dark text-white shadow-lg hover:shadow-xl transition-all duration-300 group"
+          className="fixed bottom-8 right-8 z-50 p-3 sm:p-4 rounded-full bg-[#8b1e1e] hover:bg-[#631515] text-white shadow-lg hover:shadow-xl transition-all duration-300 group"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-y-1 transition-transform duration-300" />
