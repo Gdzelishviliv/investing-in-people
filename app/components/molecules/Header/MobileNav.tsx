@@ -9,7 +9,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
   },
 };
 
@@ -18,13 +18,13 @@ const itemVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
 };
 
-export function MobileNav({
-  expandedItem,
-  setExpandedItem,
-}: {
+interface MobileNavProps {
   expandedItem: string | null;
   setExpandedItem: (v: string | null) => void;
-}) {
+  closeMenu: () => void; // მთლიანად დახურვა
+}
+
+export function MobileNav({ expandedItem, setExpandedItem, closeMenu }: MobileNavProps) {
   const pathname = usePathname();
 
   return (
@@ -52,22 +52,20 @@ export function MobileNav({
             <div key={item.href}>
               {/* Parent Item */}
               <div
-                className={`
-                  flex items-center justify-between px-4 py-3
-                  text-sm md:text-base font-medium
-                  ${isActive ? "text-[#8b1e1e]" : "text-[#dbb9b9]"}
-                `}
+                className={`flex items-center justify-between px-4 py-3 text-sm md:text-base font-medium ${
+                  isActive ? "text-[#8b1e1e]" : "text-[#dbb9b9]"
+                }`}
               >
-                {/* Link */}
+                {/* Parent Link */}
                 <Link
                   href={item.href}
                   className="flex-1 text-left hover:text-[#8b1e1e] transition"
-                  onClick={() => setExpandedItem(null)}
+                  onClick={closeMenu}
                 >
                   {item.label}
                 </Link>
 
-                {/* Toggle button for children */}
+                {/* Toggle children */}
                 {item.children && (
                   <button
                     onClick={() =>
@@ -75,7 +73,7 @@ export function MobileNav({
                     }
                     aria-expanded={isExpanded}
                     aria-label="Toggle submenu"
-                    className="ml-2 p-2"
+                    className="w-10 h-10 bg-neutral-900/10 backdrop-blur-sm shadow-sm border border-white/20 transition-all duration-300 rounded-full flex items-center justify-center"
                   >
                     <motion.svg
                       animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -115,7 +113,7 @@ export function MobileNav({
                       >
                         <Link
                           href={child.href}
-                          onClick={() => setExpandedItem(null)}
+                          onClick={closeMenu}
                           className="block px-8 py-3 text-sm text-[#dbb9b9] hover:text-[#8b1e1e] transition"
                         >
                           {child.label}

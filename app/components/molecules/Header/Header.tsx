@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Twitter, Facebook, Menu, X } from "lucide-react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { MobileNav } from "./MobileNav";
 import { navItems } from "./navItems";
 import { usePathname } from "next/navigation";
@@ -21,8 +21,12 @@ export function Header() {
   const headerY = isMobile
     ? useTransform(scrollY, [0, 100], [0, 8])
     : useTransform(scrollY, [0, 100], [0, 0]);
-
   const desktopRadius = useTransform(scrollY, [0, 80], ["0px", "16px"]);
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setExpandedItem(null);
+  };
 
   return (
     <motion.header
@@ -37,22 +41,22 @@ export function Header() {
       className="flex flex-col gap-3 md:gap-4 m-auto sticky top-0 z-50 bg-neutral-900/80 backdrop-blur-xl shadow-sm border border-t-0 border-white/20 hover:border-red-300/50 transition-all duration-300 px-4 py-3 md:px-6 md:py-4"
     >
       {/* Social Icons Desktop */}
-      <div className="hidden lg:block mb-4">
-        <div className="container mx-auto px-0 flex justify-end gap-4">
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#dbb9b9] hover:text-[#8b1e1e] transition">
-            <Twitter className="h-5 w-5" />
-          </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#dbb9b9] hover:text-[#8b1e1e] transition">
-            <Facebook className="h-5 w-5" />
-          </a>
-        </div>
+      <div className="hidden lg:flex justify-end gap-4 mb-4">
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#dbb9b9] hover:text-[#8b1e1e] transition">
+          <Twitter className="h-5 w-5" />
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#dbb9b9] hover:text-[#8b1e1e] transition">
+          <Facebook className="h-5 w-5" />
+        </a>
       </div>
 
       {/* Main Nav */}
-      <div className="container mx-auto flex items-center justify-between gap-4">
-        <Link href="/" className="text-2xl md:text-3xl font-bold text-[#dbb9b9] shrink-0">IPC</Link>
+      <div className="flex items-center justify-between gap-4">
+        <Link href="/" className="text-2xl md:text-3xl font-bold text-[#dbb9b9] shrink-0">
+          IPC
+        </Link>
 
-        {/* Desktop */}
+        {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map(item => {
             const isActive =
@@ -81,19 +85,17 @@ export function Header() {
           })}
         </nav>
 
-        {/* Mobile */}
-        <div className="flex items-center gap-3 lg:hidden">
+        {/* Mobile Hamburger */}
+        <div className="lg:hidden flex items-center gap-3">
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#dbb9b9] hover:text-[#8b1e1e] transition">
             <Twitter className="h-5 w-5" />
           </a>
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#dbb9b9] hover:text-[#8b1e1e] transition">
             <Facebook className="h-5 w-5" />
           </a>
-
-          {/* Hamburger */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-[#dbb9b9] hover:text-[#8b1e1e] transition ml-2"
+            className="p-2 text-[#dbb9b9] hover:text-[#8b1e1e] transition"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -102,9 +104,15 @@ export function Header() {
         </div>
       </div>
 
-      {/* MobileNav Dropdown */}
+      {/* MobileNav */}
       <AnimatePresence>
-        {isOpen && <MobileNav expandedItem={expandedItem} setExpandedItem={setExpandedItem} />}
+        {isOpen && (
+          <MobileNav
+            expandedItem={expandedItem}
+            setExpandedItem={setExpandedItem}
+            closeMenu={closeMenu}
+          />
+        )}
       </AnimatePresence>
     </motion.header>
   );
