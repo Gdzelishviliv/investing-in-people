@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "./components/molecules/Header";
+import { Header } from "./components/molecules/Header/Header";
 import { Footer } from "./components/molecules/Footer";
 import { ScrollToTop } from "./components/atoms/ScrollToTop";
+import type { Metadata, Viewport } from 'next'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,15 +11,16 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Investing in People and Culture",
   description: "Supporting refugees, asylum seekers, and minority communities",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
   themeColor: "#8b1e1e",
 };
 

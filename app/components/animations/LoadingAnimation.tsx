@@ -9,7 +9,7 @@ export function LoadingAnimation() {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 bg-linear-to-br from-[#f4a5a5] via-[#f28a8a] to-[#e66b6b] flex flex-col items-center justify-center"
+      className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center"
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}

@@ -27,7 +27,6 @@ export default function GalleryPage() {
 
     return (
         <div className="w-full">
-            {/* Hero Section */}
             <section className="relative py-20 sm:py-28 lg:py-36 bg-linear-to-br from-[#8b1e1e] to-[#631515] text-white overflow-hidden">
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -44,8 +43,6 @@ export default function GalleryPage() {
                     </motion.div>
                 </div>
             </section>
-
-            {/* Gallery Grid */}
             <section className="py-16 sm:py-20 lg:py-24 bg-[#f5f7fa]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -77,8 +74,6 @@ export default function GalleryPage() {
                     </div>
                 </div>
             </section>
-
-            {/* Lightbox Modal */}
             {selectedImage !== null && (
                 <motion.div
                     initial={{ opacity: 0 }}
