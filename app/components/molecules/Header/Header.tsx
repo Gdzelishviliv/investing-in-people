@@ -27,12 +27,12 @@ export function Header() {
   return (
     <motion.header
       style={{
-        width: headerWidth,
-        y: headerY,
-        borderBottomLeftRadius: isMobile ? "12px" : desktopRadius,
-        borderBottomRightRadius: isMobile ? "12px" : desktopRadius,
-        borderTopLeftRadius: isMobile ? "12px" : "0px",
-        borderTopRightRadius: isMobile ? "12px" : "0px",
+        width: isMobile ? "100%" : headerWidth,
+        y: isMobile ? 0 : headerY,
+        borderBottomLeftRadius: isMobile ? "0px" : desktopRadius,
+        borderBottomRightRadius: isMobile ? "0px" : desktopRadius,
+        borderTopLeftRadius: "0px",
+        borderTopRightRadius: "0px",
       }}
       className="flex flex-col gap-3 md:gap-4 m-auto sticky top-0 z-50 bg-neutral-900/80 backdrop-blur-xl shadow-sm border border-t-0 border-white/20 hover:border-red-300/50 transition-all duration-300 px-4 py-3 md:px-6 md:py-4"
     >

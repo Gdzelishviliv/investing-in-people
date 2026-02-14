@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 
@@ -8,35 +8,42 @@ export function ScrollToTop() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+
         const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
+            // Clear any pending timeout
+            clearTimeout(timeoutId);
+
+            // Use a debounce to prevent rapid state changes
+            timeoutId = setTimeout(() => {
+                const shouldShow = window.scrollY > 400;
+                setIsVisible(shouldShow);
+            }, 50);
         };
 
-        window.addEventListener("scroll", toggleVisibility);
+        window.addEventListener("scroll", toggleVisibility, { passive: true });
 
         return () => {
+            clearTimeout(timeoutId);
             window.removeEventListener("scroll", toggleVisibility);
         };
     }, []);
 
-    const scrollToTop = () => {
+    const scrollToTop = useCallback(() => {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
         });
-    };
+    }, []);
 
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             {isVisible && (
                 <motion.button
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                    transition={{ duration: 0.2 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={scrollToTop}
