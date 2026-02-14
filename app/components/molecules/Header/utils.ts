@@ -11,7 +11,7 @@ export function isItemActive(
   ) ?? false;
 }
 export function useIsMobile(breakpoint = 1024) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
@@ -23,5 +23,6 @@ export function useIsMobile(breakpoint = 1024) {
     return () => mq.removeEventListener("change", handler);
   }, [breakpoint]);
 
-  return isMobile;
+  // Return false during SSR/hydration, true value after mount
+  return isMobile ?? false;
 }
