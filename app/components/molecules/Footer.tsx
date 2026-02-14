@@ -8,10 +8,8 @@ export function Footer() {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <footer className="bg-[#2f2f2f] text-[#e3e4e4]">
-      {/* Main content */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +53,6 @@ export function Footer() {
               {FOOTER_CTA.button.label}
             </button>
           </motion.div>
-          {/* Contact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -65,11 +62,9 @@ export function Footer() {
             <h3 className="text-xl font-semibold mb-6">
               {FOOTER_CONTACT.title}
             </h3>
-
             <ul className="space-y-5 text-slate-300">
               {FOOTER_CONTACT.items.map((item, index) => {
                 const Icon = item.icon;
-
                 return (
                   <li
                     key={item.id}
@@ -96,7 +91,6 @@ export function Footer() {
           </motion.div>
         </div>
       </div>
-      {/* Bottom bar */}
       <div className="border-t border-white/10 py-6">
         <div className="container text-center mx-auto px-4 text-sm text-[#e3e4e4]">
           <p>
