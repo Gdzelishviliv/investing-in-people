@@ -45,7 +45,7 @@ export function About() {
         </motion.div>
 
         {/* Main Content */}
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-20">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-20 overflow-hidden">
           {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -54,7 +54,7 @@ export function About() {
             viewport={{ amount: 0.2 }}
           >
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#a24b4b] to-[#dbb9b9] rounded-xl opacity-30 blur-xl"></div>
+              <div className="absolute -inset-1 bg-linear-to-r from-[#a24b4b] to-[#dbb9b9] rounded-xl opacity-30 blur-xl"></div>
               <img
                 src="https://i-p-c.org/wp-content/uploads/2022/03/ipc_webcover-1-e1687948316485.jpg"
                 alt="IPC community gathering"
@@ -81,7 +81,7 @@ export function About() {
             </div>
 
             <div className="pt-4 space-y-3">
-              <p className="text-gray-800 font-semibold text-sm uppercase tracking-wide text-[#8b1e1e]">
+              <p className="text-gray-800 font-semibold text-sm uppercase tracking-wide">
                 What we do
               </p>
               <ul className="space-y-2 text-gray-700 text-sm">
