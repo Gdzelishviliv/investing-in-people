@@ -50,7 +50,7 @@ export function AnimatedCursor() {
   const isDesktop = useIsDesktop(1024);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number>(null);
   const lastTimeRef = useRef<number>(0);
 
   const state = useRef({
