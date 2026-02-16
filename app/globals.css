@@ -11,9 +11,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 html, body {
-  margin: 0;
+  margin: auto;
   padding: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 @theme inline {

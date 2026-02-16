@@ -290,7 +290,7 @@ export function AnimatedCursor() {
       `}</style>
       <canvas
         ref={canvasRef}
-        className="pointer-events-none fixed inset-0 z-[9999]"
+        className="pointer-events-none fixed inset-0 z-9999"
         aria-hidden="true"
       />
     </>
