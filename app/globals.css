@@ -10,11 +10,28 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-html, body {
+html,
+body {
   margin: auto;
   padding: 0;
   min-height: 100dvh;
 }
+/* globals.css */
+
+*,
+*::before,
+*::after {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+  background: transparent;
+}
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
