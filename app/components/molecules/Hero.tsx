@@ -41,7 +41,7 @@ export function Hero() {
         }}
       />
 
-      <div className="container mx-auto px-4 py-32 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-32 relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}

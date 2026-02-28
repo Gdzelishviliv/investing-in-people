@@ -8,7 +8,7 @@ export function Footer() {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <footer className="bg-[#2f2f2f] text-[#e3e4e4]">
-      <div className="container mx-auto px-5 py-16">
+      <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-6">
-        <div className="container text-center mx-auto px-4 text-sm text-[#e3e4e4]">
+        <div className="max-w-7xl text-center mx-auto px-6 text-sm text-[#e3e4e4]">
           <p>
             © {new Date().getFullYear()} {FOOTER_META.charityName}. Charity Number{" "}
             {FOOTER_META.charityNumber}. Reg. Office:{" "}
