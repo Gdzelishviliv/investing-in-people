@@ -15,13 +15,13 @@ const programs = [
   {
     title: "Overseas Doctors",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg",
-    link: "/repod",
+    link: "/pages/overseas-doctors",
     accent: "#86efac",
   },
   {
     title: "Integration Activities",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_internationalwomensday-scaled.jpg",
-    link: "/integration",
+    link: "/pages/tyneside",
     accent: "#facc15",
   },
 ]
