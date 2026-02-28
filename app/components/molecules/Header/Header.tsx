@@ -17,7 +17,7 @@ export function Header() {
   const isMobile = useIsMobile();
 
   const { scrollY } = useScroll();
-  const headerWidth = useTransform(scrollY, [0, 100], ["80rem", "72rem"]);
+  const headerWidth = useTransform(scrollY, [0, 100], ["100%", "90%"]);
   const headerY = isMobile
     ? useTransform(scrollY, [0, 100], [0, 8])
     : useTransform(scrollY, [0, 100], [0, 0]);
@@ -38,9 +38,8 @@ export function Header() {
         borderTopLeftRadius: isMobile ? "12px" : "0px",
         borderTopRightRadius: isMobile ? "12px" : "0px",
       }}
-      className="fixed top-0 left-1/2 -translate-x-1/2 z-50 bg-neutral-900/80 backdrop-blur-xl shadow-sm border border-t-0 border-white/20 hover:border-red-300/50 transition-all duration-300 w-full max-w-[80rem]"
+      className="fixed top-0 left-1/2 -translate-x-1/2 z-50 max-w-7xl bg-neutral-900/80 backdrop-blur-xl shadow-sm border border-t-0 border-white/20 hover:border-red-300/50 transition-all duration-300 px-6 py-3 md:py-4 flex flex-col gap-3 md:gap-4"
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 md:py-4 flex flex-col gap-3 md:gap-4">
       {/* Social Icons Desktop */}
       <div className="hidden lg:flex justify-end gap-4 mb-4">
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#dbb9b9] hover:text-[#8b1e1e] transition">
@@ -115,7 +114,6 @@ export function Header() {
           />
         )}
       </AnimatePresence>
-      </div>
     </motion.header>
   );
 }
