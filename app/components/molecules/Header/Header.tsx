@@ -17,6 +17,7 @@ export function Header() {
   const isMobile = useIsMobile();
 
   const { scrollY } = useScroll();
+  const headerWidth = useTransform(scrollY, [0, 100], ["100%", "90%"]);
   const headerY = isMobile
     ? useTransform(scrollY, [0, 100], [0, 8])
     : useTransform(scrollY, [0, 100], [0, 0]);
@@ -30,6 +31,7 @@ export function Header() {
   return (
     <motion.header
       style={{
+        width: headerWidth,
         y: headerY,
         borderBottomLeftRadius: isMobile ? "12px" : desktopRadius,
         borderBottomRightRadius: isMobile ? "12px" : desktopRadius,
