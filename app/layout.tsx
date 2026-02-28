@@ -39,7 +39,7 @@ export default function RootLayout({
         <AnimatedCursor/>
         <div className="fixed inset-0 bg-[#e3e4e4] -z-10" />
         <div className="relative mx-auto max-w-480 min-h-dvh flex flex-col bg-[#f5f7fa]/95 shadow-2xl">
-          <Header />
+          <Header/>
           <main className="grow">{children}</main>
           <Footer />
         </div>

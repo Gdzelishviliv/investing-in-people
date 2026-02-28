@@ -9,20 +9,20 @@ const programs = [
   {
     title: "Befriend a Refugee",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/0_ATR_MGA_300421mgaBini.jpg",
-    link: "/befriending",
-    accent: "#7dd3fc", // soft blue
+    link: "/pages/befriending",
+    accent: "#7dd3fc",
   },
   {
     title: "Overseas Doctors",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_culting-1-scaled.jpg",
     link: "/repod",
-    accent: "#86efac", // soft green
+    accent: "#86efac",
   },
   {
     title: "Integration Activities",
     image: "https://i-p-c.org/wp-content/uploads/2022/03/ipc_internationalwomensday-scaled.jpg",
     link: "/integration",
-    accent: "#facc15", // warm gold
+    accent: "#facc15",
   },
 ]
 
@@ -34,6 +34,9 @@ export function ProgramCards() {
           {programs.map((program, index) => (
             <motion.div
               key={index}
+              // ↓ tells AnimatedCursor to morph onto this element
+              data-cursor="button"
+              data-cursor-color={program.accent}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

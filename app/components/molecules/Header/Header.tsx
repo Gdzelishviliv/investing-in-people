@@ -30,6 +30,7 @@ export function Header() {
 
   return (
     <motion.header
+      data-header
       style={{
         width: headerWidth,
         y: headerY,

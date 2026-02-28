@@ -158,7 +158,7 @@ export default function ContactPage() {
 
                                 <motion.button
                                     type="submit"
-                                    whileHover={{ scale: 1.02 }}
+                                    whileHover={{ scale: 1 }}
                                     whileTap={{ scale: 0.98 }}
                                     className="w-full px-8 py-4 bg-[#8b1e1e] hover:bg-[#631515] text-white font-semibold rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
                                 >
