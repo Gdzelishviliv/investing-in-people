@@ -414,19 +414,25 @@ export function AnimatedCursor() {
         ctx.restore();
       }
 
-      // ── Button morph (clipped below header) ──
+      // ── Button morph ──
       if (s.blend > 0.01) {
-        // Read header bottom live — getBoundingClientRect is scroll-safe
-        const headerEl = document.querySelector("[data-header]") as HTMLElement | null;
+        const headerEl     = document.querySelector("[data-header]") as HTMLElement | null;
         const headerBottom = headerEl ? headerEl.getBoundingClientRect().bottom : 0;
+        // Only clip when the hovered element is OUTSIDE the header.
+        // If the user is hovering a nav link, hoveredEl is inside the header → no clip.
+        const hoveredInHeader = s.hoveredEl
+          ? s.hoveredEl.closest("[data-header]") !== null
+          : false;
 
         ctx.save();
         ctx.globalAlpha = s.blend;
 
-        // Clip: only draw morph below the header's bottom edge
-        ctx.beginPath();
-        ctx.rect(0, headerBottom, window.innerWidth, window.innerHeight - headerBottom);
-        ctx.clip();
+        if (!hoveredInHeader && headerBottom > 0) {
+          // Clip morph to below the header so card glow never bleeds over it
+          ctx.beginPath();
+          ctx.rect(0, headerBottom, window.innerWidth, window.innerHeight - headerBottom);
+          ctx.clip();
+        }
 
         const maxDim  = Math.max(s.mW, s.mH);
         const morphGA = (0.12 + Math.sin(s.glowPhase) * 0.04).toFixed(3);
