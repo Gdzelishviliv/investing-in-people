@@ -17,7 +17,7 @@ export function Header() {
   const isMobile = useIsMobile();
 
   const { scrollY } = useScroll();
-  const headerWidth = useTransform(scrollY, [0, 100], ["100%", "90%"]);
+  const headerWidth = useTransform(scrollY, [0, 100], ["80rem", "72rem"]);
   const headerY = isMobile
     ? useTransform(scrollY, [0, 100], [0, 8])
     : useTransform(scrollY, [0, 100], [0, 0]);
@@ -38,7 +38,7 @@ export function Header() {
         borderTopLeftRadius: isMobile ? "12px" : "0px",
         borderTopRightRadius: isMobile ? "12px" : "0px",
       }}
-      className="fixed top-0 left-0 right-0 z-50 bg-neutral-900/80 backdrop-blur-xl shadow-sm border border-t-0 border-white/20 hover:border-red-300/50 transition-all duration-300"
+      className="fixed top-0 left-1/2 -translate-x-1/2 z-50 bg-neutral-900/80 backdrop-blur-xl shadow-sm border border-t-0 border-white/20 hover:border-red-300/50 transition-all duration-300 w-full max-w-[80rem]"
     >
       <div className="max-w-7xl mx-auto px-6 py-3 md:py-4 flex flex-col gap-3 md:gap-4">
       {/* Social Icons Desktop */}
